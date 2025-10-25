@@ -12,7 +12,6 @@ import java.util.HashMap;
 public class ResponseEntity {
     public org.springframework.http.ResponseEntity<?> apiResponse(Integer responseCode, HashMap<String, Object> response, Page page) {
         try {
-            //logger.info(new ObjectMapper().writeValueAsString(response));
             response.put("timestamp", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss:SSSS").format(LocalDateTime.now()));
             response.put("status", responseCode);
 
@@ -33,7 +32,6 @@ public class ResponseEntity {
             }
         } catch (Exception e) {
 
-            //    e.printStackTrace();
             if (response == null) {
                 response = new HashMap<>();
             }

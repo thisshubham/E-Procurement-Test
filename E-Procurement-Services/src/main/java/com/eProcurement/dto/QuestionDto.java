@@ -15,7 +15,6 @@ public class QuestionDto {
     private Boolean active = true;
     private Long subjectId; // 🔗 Foreign key to Subject
 
-    // ✅ Answers list for this question
     private List<AnswerDto> answers;
     @Data
     public static class AnswerDto {

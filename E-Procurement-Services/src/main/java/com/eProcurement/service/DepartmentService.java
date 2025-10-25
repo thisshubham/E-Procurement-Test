@@ -105,7 +105,6 @@ public class DepartmentService {
         } catch (Exception e) {
             responseDto.setResponseMessege("Failure");
             responseDto.setResponseCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
-//            throw new RuntimeException(e);
 
         }
         return responseDto;

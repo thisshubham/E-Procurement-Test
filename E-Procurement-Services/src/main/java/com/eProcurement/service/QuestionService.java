@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class QuestionService {
@@ -72,10 +73,37 @@ public class QuestionService {
     }
 
     public void deleteQuestion(Long id) {
+        Question question = questionRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Question not found with ID: " + id));
+
+        questionRepo.delete(question);
     }
 
     public QuestionDto getQuestionById(Long id) {
-        QuestionDto questionDto = new QuestionDto();
-        return questionDto;
+        Question question = questionRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Question not found with ID: " + id));
+
+        return mapToDto(question);
+    }
+    private QuestionDto mapToDto(Question question) {
+        QuestionDto dto = new QuestionDto();
+        dto.setQuestionText(question.getQuestionText());
+        dto.setDifficultyLevel(question.getDifficultyLevel());
+        dto.setMarks(question.getMarks());
+        dto.setActive(question.getActive());
+        dto.setSubjectId(question.getSubject().getId());
+
+        // Map answers
+        dto.setAnswers(question.getAnswers()
+                .stream()
+                .map(answer -> {
+                    QuestionDto.AnswerDto answerDto = new QuestionDto.AnswerDto();
+                    answerDto.setAnswerText(answer.getAnswerText());
+                    answerDto.setCorrect(answer.getIsCorrect());
+                    return answerDto;
+                })
+                .collect(Collectors.toList()));
+
+        return dto;
     }
 }

@@ -5,6 +5,7 @@ import com.eProcurement.dto.QuizDto;
 import com.eProcurement.dto.StudentAnswerDto;
 import com.eProcurement.dto.SubjectDto;
 import com.eProcurement.dto.TestResultDto;
+import com.eProcurement.entity.Subject;
 import com.eProcurement.service.QuizService;
 import com.eProcurement.service.TestResultService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class StudentController {
     private TestResultService testResultService;
 
     @GetMapping(Commonconstants.SUBJECT)
-    public ResponseEntity<List<SubjectDto>> getAvailableSubjects() {
+    public ResponseEntity<List<Subject>> getAvailableSubjects() {
         return ResponseEntity.ok(quizService.getAvailableSubjects());
     }
 

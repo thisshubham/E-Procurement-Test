@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TestResultService {
@@ -41,8 +42,28 @@ public class TestResultService {
         return testResultRepo.save(result);
     }
 
+//    public List<TestResultDto> getMyResults() {
+//        List<TestResultDto> testResultDtos = new ArrayList<>();
+//        return  testResultDtos;
+//    }
+    public TestResultDto mapToDto(TestResult result) {
+        TestResultDto dto = new TestResultDto();
+        dto.setId(result.getId());
+        dto.setTotalQuestions(result.getTotalQuestions());
+        dto.setAttemptedQuestions(result.getAttemptedQuestions());
+        dto.setCorrectAnswers(result.getCorrectAnswers());
+        dto.setWrongAnswers(result.getWrongAnswers());
+        dto.setMarksObtained(result.getMarksObtained());
+        dto.setTotalMarks(result.getTotalMarks());
+        dto.setPercentage(result.getPercentage());
+        dto.setStatus(result.getStatus().name());
+        dto.setSubjectName(result.getSubject().getName());
+        return dto;
+    }
     public List<TestResultDto> getMyResults() {
-        List<TestResultDto> testResultDtos = new ArrayList<>();
-        return  testResultDtos;
+        Long currentStudentId = 1L;
+
+        List<TestResult> results = testResultRepo.findAllBySubject_Id(currentStudentId);
+        return results.stream().map(this::mapToDto).collect(Collectors.toList());
     }
 }

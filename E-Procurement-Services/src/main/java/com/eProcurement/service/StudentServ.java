@@ -28,7 +28,6 @@ public class StudentServ {
     @Autowired
     private StudentRepo studentRepo;
 
-    // Create or update student
     public StudentDto createStudent(StudentDto studentDto) {
         Optional<Department> deptOpt = departmentRepo.findById(studentDto.getDepartmentId());
         Optional<Teacher> teacherOpt = teacherRepo.findById(studentDto.getTeacherId());
@@ -57,7 +56,6 @@ public class StudentServ {
         return responseDto;
     }
 
-    // Fetch student by ID
     public StudentDto getStudentById(Long studentId) {
         Optional<Student> studentOpt = studentRepo.findById(studentId);
         if (!studentOpt.isPresent()) {
@@ -68,7 +66,6 @@ public class StudentServ {
         return dto;
     }
 
-    // Mapper function
     private StudentDto mapToDto(Student student) {
         StudentDto dto = new StudentDto();
         dto.setId(student.getId());
@@ -84,14 +81,12 @@ public class StudentServ {
         return dto;
     }
 
-    // Get all students
     public List<Student> getAllStudents() {
         List<Student> students = repo.findAll();
         return students;
     }
 
 
-    // Delete student
     public String deleteStudent(Long id) {
         if (repo.existsById(id)) {
             repo.deleteById(id);
@@ -101,7 +96,6 @@ public class StudentServ {
         }
     }
 
-    // Optional: Find by department
     public List<Student> getStudentsByDepartmentId(Long departmentId) {
         List<Student> students = repo.findByDepartmentId(departmentId);
         return students;

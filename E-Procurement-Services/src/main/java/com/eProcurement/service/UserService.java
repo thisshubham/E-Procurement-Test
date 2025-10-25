@@ -29,7 +29,7 @@ public class UserService {
         ResponseDto responseDto = new ResponseDto();
         try {
             if (request == null || request.getDepartmentId() == null) {
-                responseDto.setResponseCode(400); // 400 Bad Request
+                responseDto.setResponseCode(400);
                 responseDto.setResponseMessege("Invalid request: Teacher or Department data is missing.");
                 return responseDto;
             }
