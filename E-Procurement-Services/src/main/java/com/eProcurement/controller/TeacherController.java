@@ -7,6 +7,7 @@ import com.eProcurement.dto.TestResultDto;
 import com.eProcurement.service.QuestionService;
 import com.eProcurement.service.SubjectService;
 import com.eProcurement.service.TestResultService;
+import com.eProcurement.utility.ResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,13 +27,13 @@ public class TeacherController {
     private TestResultService testResultService;
 
     @PostMapping(Commonconstants.SUBJECT)
-    public ResponseEntity<SubjectDto> createSubject(@RequestBody SubjectDto dto) {
-        return ResponseEntity.ok(subjectService.createSubject(dto));
+    public ResponseDto createSubject(@RequestBody SubjectDto dto) {
+        return subjectService.createSubject(dto);
     }
 
     @GetMapping(Commonconstants.SUBJECT_DEPARTMENTID)
-    public ResponseEntity<List<SubjectDto>> getSubjects(@PathVariable Long departmentId) {
-        return ResponseEntity.ok(subjectService.getSubjectsByDepartment(departmentId));
+    public ResponseEntity<?> getSubjects(@PathVariable Long departmentId) {
+        return subjectService.getSubjectsByDepartment(departmentId);
     }
 
     @PostMapping(Commonconstants.SUBJECT_SUBJECTID_QUESTION)

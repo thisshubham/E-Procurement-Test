@@ -2,6 +2,7 @@ package com.eProcurement.controller;
 
 import com.eProcurement.constants.Commonconstants;
 import com.eProcurement.dto.SubjectDto;
+import com.eProcurement.entity.Subject;
 import com.eProcurement.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +21,12 @@ public class SubjectController {
     private SubjectService subjectService;
 
     @GetMapping
-    public ResponseEntity<List<SubjectDto>> getAllSubjects() {
+    public ResponseEntity<List<Subject>> getAllSubjects() {
         return ResponseEntity.ok(subjectService.getAllSubjects());
     }
 
     @GetMapping(Commonconstants.ID)
-    public ResponseEntity<SubjectDto> getSubject(@PathVariable Long id) {
+    public ResponseEntity<Subject> getSubject(@PathVariable Long id) {
         return ResponseEntity.ok(subjectService.getSubjectById(id));
     }
 }

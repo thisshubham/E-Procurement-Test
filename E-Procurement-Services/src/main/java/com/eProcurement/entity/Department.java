@@ -42,4 +42,5 @@ public class Department {
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
+    private Boolean isDelete;
 }

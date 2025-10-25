@@ -3,6 +3,7 @@ package com.eProcurement.controller;
 import com.eProcurement.constants.Commonconstants;
 import com.eProcurement.dto.DepartmentDto;
 import com.eProcurement.service.DepartmentService;
+import com.eProcurement.utility.ResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,15 +29,14 @@ public class DepartmentController {
 
     @PutMapping(Commonconstants.ID)
 //    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<DepartmentDto> update(@PathVariable Long id, @RequestBody DepartmentDto dto) {
-        return ResponseEntity.ok(departmentService.updateDepartment(id, dto));
+    public ResponseDto update(@PathVariable Long id, @RequestBody DepartmentDto dto) {
+        return departmentService.updateDepartment(id, dto);
     }
 
     @DeleteMapping(Commonconstants.ID)
 //    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        departmentService.deleteDepartment(id);
-        return ResponseEntity.noContent().build();
+    public ResponseDto delete(@PathVariable Long id) {
+        return  departmentService.deleteDepartment(id);
     }
 }
 

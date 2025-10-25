@@ -1,23 +1,17 @@
 package com.eProcurement.dto;
-
-import com.eProcurement.entity.Department;
-import com.eProcurement.entity.Student;
-import com.eProcurement.entity.TestResult;
+import com.eProcurement.entity.Admin;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 @Data
-public class TeacherDto {
+@EqualsAndHashCode(callSuper = false)
 
-    private Department department;
-
-    private String specialization;
-
+public class TeacherDto extends Admin {
+    private String username;
+    private String password;
+    private String email;
+    private String fullName;
     private String employeeId;
-
-    private List<Student> students = new ArrayList<>();
-
-    private List<TestResult> gradedResults = new ArrayList<>();
+    private String specialization;
+    private Long departmentId;
 }
