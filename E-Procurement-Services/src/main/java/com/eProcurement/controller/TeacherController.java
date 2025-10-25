@@ -28,19 +28,10 @@ public class TeacherController {
     @Autowired
     private TestResultService testResultService;
 
-    @PostMapping(Commonconstants.SUBJECT)
-    public ResponseDto createSubject(@RequestBody SubjectDto dto) {
-        return subjectService.createSubject(dto);
-    }
 
     @GetMapping(Commonconstants.SUBJECT_DEPARTMENTID)
     public ResponseEntity<?> getSubjects(@PathVariable Long departmentId) {
         return subjectService.getSubjectsByDepartment(departmentId);
-    }
-
-    @PostMapping(Commonconstants.SUBJECT_QUESTION)
-    public ResponseEntity<?> addQuestion( @RequestBody QuestionDto dto) {
-        return questionService.addQuestion(dto.getSubjectId(), dto);
     }
 
     @GetMapping(Commonconstants.SUBJECT_SUBJECTID_QUESTION)

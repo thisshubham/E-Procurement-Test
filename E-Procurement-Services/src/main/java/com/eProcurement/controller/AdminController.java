@@ -1,11 +1,11 @@
 package com.eProcurement.controller;
 
 import com.eProcurement.constants.Commonconstants;
-import com.eProcurement.dto.AdminDto;
-import com.eProcurement.dto.DepartmentDto;
-import com.eProcurement.dto.TeacherDto;
+import com.eProcurement.dto.*;
 import com.eProcurement.entity.Teacher;
 import com.eProcurement.service.DepartmentService;
+import com.eProcurement.service.QuestionService;
+import com.eProcurement.service.SubjectService;
 import com.eProcurement.service.UserService;
 import com.eProcurement.utility.ResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -16,15 +16,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(Commonconstants.BASE_URL+Commonconstants.ADMIN)
+@RequestMapping(Commonconstants.BASE_URL + Commonconstants.ADMIN)
 //@RequiredArgsConstructor
 //@PreAuthorize("hasRole('ADMIN')")
 public class AdminController {
 
     @Autowired
-    private  DepartmentService departmentService;
+    private DepartmentService departmentService;
     @Autowired
-    private  UserService userService;
+    private UserService userService;
+    @Autowired
+    private QuestionService questionService;
+    @Autowired
+    private SubjectService subjectService;
+
+
 
     @PostMapping(Commonconstants.DEPARTMENT)
     public ResponseEntity<DepartmentDto> createDepartment(@RequestBody DepartmentDto dto) {
@@ -34,12 +40,12 @@ public class AdminController {
     @GetMapping("/departments")
     public ResponseDto getDepartments() {
         ResponseDto responseDto = new ResponseDto();
-         List<DepartmentDto> allDepartments = departmentService.getAllDepartments();
-         if(allDepartments.isEmpty()){
-             responseDto.setResponseCode(404);
-             responseDto.setResponseMessege("Data not found.");
-             return responseDto;
-         }
+        List<DepartmentDto> allDepartments = departmentService.getAllDepartments();
+        if (allDepartments.isEmpty()) {
+            responseDto.setResponseCode(404);
+            responseDto.setResponseMessege("Data not found.");
+            return responseDto;
+        }
         responseDto.setResponseCode(200);
         responseDto.setResponseMessege("Success");
         responseDto.setDataList(allDepartments);
@@ -49,6 +55,15 @@ public class AdminController {
     @PostMapping(Commonconstants.TEACHERS)
     public ResponseDto createTeacher(@RequestBody TeacherDto dto) {
         return userService.createTeacher(dto);
+    }
+
+    @PostMapping(Commonconstants.SUBJECT_QUESTION)
+    public ResponseEntity<?> addQuestion(@RequestBody QuestionDto dto) {
+        return questionService.addQuestion(dto.getSubjectId(), dto);
+    }
+    @PostMapping(Commonconstants.SUBJECT)
+    public ResponseDto createSubject(@RequestBody SubjectDto dto) {
+        return subjectService.createSubject(dto);
     }
 
     @GetMapping(Commonconstants.TEACHERS)

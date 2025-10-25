@@ -2,6 +2,8 @@ package com.eProcurement.entity;
 
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,6 +39,7 @@ public class Department {
     private List<Teacher> teachers = new ArrayList<>();
 
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Student> students = new ArrayList<>();
 
     @CreationTimestamp
