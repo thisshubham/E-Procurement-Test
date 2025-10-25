@@ -1,10 +1,8 @@
 package com.eProcurement.entity;
 
 import javax.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +13,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = {"department", "teacher"})
 public class Student extends Admin {
 
     @ManyToOne(fetch = FetchType.LAZY)

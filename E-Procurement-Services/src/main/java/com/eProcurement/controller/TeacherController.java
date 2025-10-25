@@ -5,8 +5,10 @@ import com.eProcurement.dto.QuestionDto;
 import com.eProcurement.dto.SubjectDto;
 import com.eProcurement.dto.TestResultDto;
 import com.eProcurement.entity.Question;
+import com.eProcurement.entity.Student;
 import com.eProcurement.entity.TestResult;
 import com.eProcurement.service.QuestionService;
+import com.eProcurement.service.StudentServ;
 import com.eProcurement.service.SubjectService;
 import com.eProcurement.service.TestResultService;
 import com.eProcurement.utility.ResponseDto;
@@ -28,6 +30,9 @@ public class TeacherController {
     @Autowired
     private TestResultService testResultService;
 
+    @Autowired
+    private StudentServ studentServ;
+
 
     @GetMapping(Commonconstants.SUBJECT_DEPARTMENTID)
     public ResponseEntity<?> getSubjects(@PathVariable Long departmentId) {
@@ -35,8 +40,12 @@ public class TeacherController {
     }
 
     @GetMapping(Commonconstants.SUBJECT_SUBJECTID_QUESTION)
-    public ResponseEntity<List<Question>> getQuestions(@PathVariable Long subjectId) {
+    public ResponseEntity<List<Question>> getQuestions(@PathVariable("subjectId") Long subjectId) {
         return ResponseEntity.ok(questionService.getQuestionsBySubject(subjectId));
+    }
+    @GetMapping(Commonconstants.TEACHER_DEPARTMENTID_STUDENT)
+    public ResponseEntity<List<Student>> getStudentByDepartment(@PathVariable("departmentId") Long deparmentId) {
+        return ResponseEntity.ok(studentServ.getStudentsByDepartmentId(deparmentId));
     }
 
     @PutMapping(Commonconstants.RESULT_RESULTID_GRADDE)
@@ -44,7 +53,7 @@ public class TeacherController {
             @PathVariable Long resultId,
             @RequestParam double marks,
             @RequestParam(required = false) String remarks,
-            @RequestParam Long teacherId // optional: who graded
+            @RequestParam Long teacherId
     ) {
         return ResponseEntity.ok( testResultService.gradeResult(resultId, marks, remarks, teacherId));
 

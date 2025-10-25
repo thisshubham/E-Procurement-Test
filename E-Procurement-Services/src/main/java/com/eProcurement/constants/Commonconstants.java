@@ -14,6 +14,7 @@ public interface Commonconstants {
     public final String SUBJECT_DEPARTMENTID = "/subjects/{departmentId}";
     public final String SUBJECT_SUBJECTID_QUESTION = "/subjects/{subjectId}/questions";
     public final String SUBJECT_QUESTION = "/subjects/questions";
+    public final String TEACHER_DEPARTMENTID_STUDENT = "/teacher/{departmentId}/student";
 
     public final String QUESTION = "/questions";
     public final String AUTH = "/api/v1/Eprocurement";

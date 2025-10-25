@@ -73,12 +73,14 @@ public class UserService {
 
         List<Teacher> teacherList = teacherRepo.findAll();
         if (teacherList.isEmpty() || teacherList ==null){
+            responseDto.setResponseMessege("Data not found.");
             responseDto.setResponseCode(HttpStatus.OK.value());
-            responseDto.setResponseMessege("Success");
-            responseDto.setDataList(teacherList);
         }else {
             responseDto.setResponseCode(HttpStatus.NO_CONTENT.value());
-            responseDto.setResponseMessege("Data not found.");
+
+            responseDto.setResponseMessege("Success");
+            responseDto.setDataList(teacherList);
+
         }
         return responseDto;
     }
