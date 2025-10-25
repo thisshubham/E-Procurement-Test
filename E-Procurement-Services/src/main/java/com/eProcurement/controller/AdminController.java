@@ -2,13 +2,9 @@ package com.eProcurement.controller;
 
 import com.eProcurement.constants.Commonconstants;
 import com.eProcurement.dto.*;
-import com.eProcurement.entity.Teacher;
-import com.eProcurement.service.DepartmentService;
-import com.eProcurement.service.QuestionService;
-import com.eProcurement.service.SubjectService;
-import com.eProcurement.service.UserService;
+import com.eProcurement.entity.Admin;
+import com.eProcurement.service.*;
 import com.eProcurement.utility.ResponseDto;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +25,8 @@ public class AdminController {
     private QuestionService questionService;
     @Autowired
     private SubjectService subjectService;
-
+    @Autowired
+    private StudentServ studentServ;
 
 
     @PostMapping(Commonconstants.DEPARTMENT)
@@ -61,6 +58,7 @@ public class AdminController {
     public ResponseEntity<?> addQuestion(@RequestBody QuestionDto dto) {
         return questionService.addQuestion(dto.getSubjectId(), dto);
     }
+
     @PostMapping(Commonconstants.SUBJECT)
     public ResponseDto createSubject(@RequestBody SubjectDto dto) {
         return subjectService.createSubject(dto);
@@ -70,5 +68,13 @@ public class AdminController {
     public ResponseDto getTeachers() {
         return userService.getAllTeachers();
     }
-}
 
+    @PostMapping("/creStud")
+    public StudentDto createTeacher(@RequestBody StudentDto dto) {
+        if (dto.getUserRole().equals(Admin.Role.ADMIN.name())) {
+            return studentServ.createStudent(dto);
+        } else {
+            throw new RuntimeException("Invalid Role");
+        }
+    }
+}
