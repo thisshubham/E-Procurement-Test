@@ -1,8 +1,8 @@
 package com.eProcurement.controller;
 
 import com.eProcurement.constants.Commonconstants;
+import com.eProcurement.dto.AdminDto;
 import com.eProcurement.dto.DepartmentDto;
-import com.eProcurement.dto.UserDto;
 import com.eProcurement.service.DepartmentService;
 import com.eProcurement.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -34,12 +34,12 @@ public class AdminController {
     }
 
     @PostMapping(Commonconstants.TEACHERS)
-    public ResponseEntity<UserDto> createTeacher(@RequestBody UserDto dto) {
+    public ResponseEntity<AdminDto> createTeacher(@RequestBody AdminDto dto) {
         return ResponseEntity.ok(userService.createTeacher(dto));
     }
 
     @GetMapping(Commonconstants.TEACHERS)
-    public ResponseEntity<List<UserDto>> getTeachers() {
+    public ResponseEntity<List<AdminDto>> getTeachers() {
         return ResponseEntity.ok(userService.getAllTeachers());
     }
 }

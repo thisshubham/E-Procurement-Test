@@ -1,6 +1,8 @@
 package com.eProcurement.entity;
 
 import javax.persistence.*;
+
+import com.eProcurement.dto.AdminDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -47,6 +49,9 @@ public class Admin {
     @UpdateTimestamp
     @Column(nullable = false)
     private LocalDateTime updatedAt;
+
+    public Admin(AdminDto dto) {
+    }
 
     public enum Role {
         ADMIN, TEACHER, STUDENT

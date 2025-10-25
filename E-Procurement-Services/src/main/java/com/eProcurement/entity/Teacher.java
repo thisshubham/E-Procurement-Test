@@ -1,6 +1,8 @@
 package com.eProcurement.entity;
 
 import javax.persistence.*;
+
+import com.eProcurement.dto.TeacherDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -32,4 +34,7 @@ public class Teacher extends Admin {
 
     @OneToMany(mappedBy = "gradedBy", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<TestResult> gradedResults = new ArrayList<>();
+
+
+
 }
