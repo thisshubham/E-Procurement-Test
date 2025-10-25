@@ -13,6 +13,8 @@ public interface Commonconstants {
     public final String SUBJECT = "subjects";
     public final String SUBJECT_DEPARTMENTID = "/subjects/{departmentId}";
     public final String SUBJECT_SUBJECTID_QUESTION = "/subjects/{subjectId}/questions";
+    public final String SUBJECT_QUESTION = "/subjects/questions";
+
     public final String QUESTION = "/questions";
     public final String AUTH = "/api/v1/Eprocurement";
     public final String QUIZE_SUBJECTID_START =    "/quiz/{subjectId}/start";
@@ -25,6 +27,7 @@ public interface Commonconstants {
     public static final Integer NULL_VALUE= HttpStatus.NOT_FOUND.value();
     public static final String PASS_FAIL = "PASSWORD IS FAIL";
     public static final String MESSAGE="msg";
+    public static final String RESPONSECODE="responseCode";
 
     public static final String FETCH_TYPE = "FETCH";
     public static final String SUCCESS_STATUS = "SUCCESS";
