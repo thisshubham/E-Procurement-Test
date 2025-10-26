@@ -4,13 +4,8 @@ import com.eProcurement.dto.QuizDto;
 import com.eProcurement.dto.StudentAnswerDto;
 import com.eProcurement.dto.SubjectDto;
 import com.eProcurement.dto.TestResultDto;
-import com.eProcurement.entity.Answer;
-import com.eProcurement.entity.Question;
-import com.eProcurement.entity.Subject;
-import com.eProcurement.entity.TestResult;
-import com.eProcurement.repo.QuestionRepo;
-import com.eProcurement.repo.SubjectRepo;
-import com.eProcurement.repo.TestResultRepo;
+import com.eProcurement.entity.*;
+import com.eProcurement.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,66 +29,102 @@ public class QuizService {
 
     @Autowired
     private TestResultService testResultService;
+    @Autowired
+    private StudentRepo studentRepo;
+
+    @Autowired
+    private StudentAnswerRepo studentAnswerRepo;
 
     @Transactional
 
-    public QuizDto startQuiz(Long subjectId) {
-        Subject subject = subjectRepo.findById(subjectId)
-                .orElseThrow(() -> new RuntimeException("Subject not found"));
+    public QuizDto startQuiz(Long subjectId,Long studentId) {
+        QuizDto quiz = null;
+        try {
+            Student student = studentRepo.findStudentByStudentIdCode(studentId);
 
-        List<Question> questions = questionRepo.findAllBySubject_Id(subjectId);
+            Subject subject = subjectRepo.findById(subjectId)
+                    .orElseThrow(() -> new RuntimeException("Subject not found"));
 
-        TestResult result = new TestResult();
-        result.setSubject(subject);
-        result.setTotalQuestions(questions.size());
-        result.setStatus(TestResult.TestStatus.IN_PROGRESS);
-        result.setStartedAt(LocalDateTime.now());
+            List<Question> questions = questionRepo.findAllBySubject_Id(subjectId);
 
-        testResultRepo.save(result);
+            TestResult result = new TestResult();
+            result.setSubject(subject);
+            result.setTotalQuestions(questions.size());
+            result.setStatus(TestResult.TestStatus.IN_PROGRESS);
+            result.setStartedAt(LocalDateTime.now());
+            result.setStudent(student);
+            result.setTotalMarks(0.0);
 
-        QuizDto quiz = new QuizDto();
-        quiz.setQuizId(result.getId());
-        quiz.setSubjectId(subjectId);
-        quiz.setQuestions(questions);
+            testResultRepo.save(result);
+
+            quiz = new QuizDto();
+            quiz.setQuizId(result.getId());
+            quiz.setSubjectId(subjectId);
+            quiz.setQuestions(questions);
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        }
 
         return quiz;
     }
 
     @Transactional
     public TestResultDto submitQuiz(Long quizId, List<StudentAnswerDto> studentAnswers) {
-        TestResult result = testResultRepo.findById(quizId)
-                .orElseThrow(() -> new RuntimeException("Test Result not found"));
+        TestResult result = null;
+        try {
+            result = testResultRepo.findById(quizId)
+                    .orElseThrow(() -> new RuntimeException("Test Result not found"));
 
-        int correct = 0;
-        int attempted = 0;
+            int correct = 0;
+            int attempted = 0;
 
-        for (StudentAnswerDto studentAnswer : studentAnswers) {
-            Question question = questionRepo.findById(studentAnswer.getQuestionId())
-                    .orElseThrow(() -> new RuntimeException("Question not found"));
+            for (StudentAnswerDto studentAnswer : studentAnswers) {
+                Question question = questionRepo.findById(studentAnswer.getQuestionId())
+                        .orElseThrow(() -> new RuntimeException("Question not found"));
+                StudentAnswer studentAnswer1 = new StudentAnswer();
 
-            Answer correctAnswer = question.getAnswers()
-                    .stream()
-                    .filter(Answer::getIsCorrect)
-                    .findFirst()
-                    .orElseThrow(() -> new RuntimeException("No correct answer defined for question"));
+                Answer correctAnswer = question.getAnswers()
+                        .stream()
+                        .filter(Answer::getIsCorrect)
+                        .findFirst()
+                        .orElseThrow(() -> new RuntimeException("No correct answer defined for question"));
 
-            if (studentAnswer.getSelectedOption().equalsIgnoreCase(correctAnswer.getAnswerText())) {
-                correct++;
+                if (studentAnswer.getSelectedOption().equalsIgnoreCase(correctAnswer.getAnswerText())) {
+                    correct++;
+                    studentAnswer1.setIsCorrect(true);
+                }
+                attempted++;
+                studentAnswer1.setSelectedAnswer(correctAnswer);
+                studentAnswer1.setQuestion(question);
+                studentAnswer1.setTestResult(result);
+                studentAnswerRepo.save(studentAnswer1);
+
+
             }
-            attempted++;
+
+            result.setAttemptedQuestions(attempted);
+            result.setCorrectAnswers(correct);
+            result.setWrongAnswers(attempted - correct);
+
+            double marksObtained = ((double) correct / result.getTotalQuestions()) * result.getTotalMarks();
+            result.setMarksObtained(marksObtained);
+            result.setStatus(TestResult.TestStatus.SUBMITTED);
+            result.setSubmittedAt(LocalDateTime.now());
+            if (result.getTotalMarks() == null || result.getTotalMarks() == 0.0) {
+                result.setPercentage(0.0);
+            } else {
+                double calculatedPercentage = (marksObtained / result.getTotalMarks()) * 100;
+                if (Double.isNaN(calculatedPercentage) || Double.isInfinite(calculatedPercentage)) {
+                    result.setPercentage(0.0);
+                } else {
+                    result.setPercentage(calculatedPercentage);
+                }
+            }
+
+            testResultRepo.save(result);
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
         }
-
-        result.setAttemptedQuestions(attempted);
-        result.setCorrectAnswers(correct);
-        result.setWrongAnswers(attempted - correct);
-
-        double marksObtained = ((double) correct / result.getTotalQuestions()) * result.getTotalMarks();
-        result.setMarksObtained(marksObtained);
-        result.setPercentage((marksObtained / result.getTotalMarks()) * 100);
-        result.setStatus(TestResult.TestStatus.SUBMITTED);
-        result.setSubmittedAt(LocalDateTime.now());
-
-        testResultRepo.save(result);
 
         return testResultService.mapToDto(result);
     }
@@ -102,5 +133,21 @@ public class QuizService {
         return subjectRepo.findAll()
                 .stream()
                 .filter(Subject::getActive)
-                .collect(Collectors.toList());    }
+                .collect(Collectors.toList());
+    }
+
+    public List<SubjectDto> getAvailableSubjects(Long studentId) {
+        List<Subject> subjects = null;
+        try {
+            Student student = studentRepo.findStudentByStudentIdCode(studentId);
+
+            subjects = subjectRepo.findSubjectsByDepartment_Id(student.getDepartment().getId());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return subjects.stream()
+                .map(SubjectDto::new)
+                .collect(Collectors.toList());
+    }
 }

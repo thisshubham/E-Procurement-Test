@@ -47,10 +47,7 @@ public class TestResultService {
         return testResultRepo.save(result);
     }
 
-//    public List<TestResultDto> getMyResults() {
-//        List<TestResultDto> testResultDtos = new ArrayList<>();
-//        return  testResultDtos;
-//    }
+
     public TestResultDto mapToDto(TestResult result) {
         TestResultDto dto = new TestResultDto();
         dto.setId(result.getId());

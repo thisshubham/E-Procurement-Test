@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface SubjectRepo  extends JpaRepository<Subject, Long> {
     List<Subject> findSubjectsByDepartment_Id(Long departmentId);
+
+
 }

@@ -25,13 +25,13 @@ public class StudentController {
     private TestResultService testResultService;
 
     @GetMapping(Commonconstants.SUBJECT)
-    public ResponseEntity<List<Subject>> getAvailableSubjects() {
-        return ResponseEntity.ok(quizService.getAvailableSubjects());
+    public ResponseEntity<List<SubjectDto>> getAvailableSubjects(@RequestParam Long studentId) {
+        return ResponseEntity.ok(quizService.getAvailableSubjects(studentId));
     }
 
     @PostMapping(Commonconstants.QUIZE_SUBJECTID_START)
-    public ResponseEntity<QuizDto> startQuiz(@PathVariable Long subjectId) {
-        return ResponseEntity.ok(quizService.startQuiz(subjectId));
+    public ResponseEntity<QuizDto> startQuiz(@PathVariable Long subjectId,@RequestParam Long studentId) {
+        return ResponseEntity.ok(quizService.startQuiz(subjectId,studentId));
     }
 
     @PostMapping(Commonconstants.QUIZE_QUIZEID_SUBMIT)
