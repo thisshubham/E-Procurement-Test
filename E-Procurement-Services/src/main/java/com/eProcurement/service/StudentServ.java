@@ -14,6 +14,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -103,8 +104,23 @@ public class StudentServ {
         return students;
     }
 
-    public Student getStudails(String studentId) {
+    public StudentDto getStudails(String studentId) {
+         Student studentByStudentIdCode = studentRepo.findStudentByStudentIdCode(studentId);
+         if(Objects.nonNull(studentByStudentIdCode)){
+             StudentDto dto = new StudentDto();
+             dto.setId(studentByStudentIdCode.getId());
+             dto.setName(studentByStudentIdCode.getFullName());
+             dto.setEmail(studentByStudentIdCode.getEmail());
+             dto.setDepartmentId(studentByStudentIdCode.getDepartment().getId());
+             dto.setDepartmentName(studentByStudentIdCode.getDepartment().getName());
+             dto.setTeacherId(studentByStudentIdCode.getTeacher().getId());
+             dto.setTeacherName(studentByStudentIdCode.getTeacher().getFullName());
+             dto.setEnrollmentYear(studentByStudentIdCode.getEnrollmentYear());
+             dto.setRole(studentByStudentIdCode.getRole().name());
+             dto.setPassword(studentByStudentIdCode.getPassword());
+             return dto;
 
-        return studentRepo.findStudentByStudentIdCode(studentId);
+         }
+         return null;
     }
 }
