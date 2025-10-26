@@ -35,6 +35,9 @@ public class QuizService {
     @Autowired
     private StudentAnswerRepo studentAnswerRepo;
 
+    @Autowired
+    private TeacherRepo teacherRepo;
+
     @Transactional
 
     public QuizDto startQuiz(Long subjectId, String studentId) {
@@ -46,6 +49,9 @@ public class QuizService {
             Subject subject = subjectRepo.findById(subjectId)
                     .orElseThrow(() -> new RuntimeException("Subject not found"));
 
+            if (subjectRepo.findSubjectsByDepartment_Id(student.getDepartment().getId()).size() < 2) {
+                throw new RuntimeException("Department must have at least 2 subjects");
+            }
             List<Question> questions = questionRepo.findAllBySubject_Id(subjectId);
             ArrayList<QuestDTo> questDTolist = new ArrayList<>();
 
@@ -60,8 +66,8 @@ public class QuizService {
                 questDTo.setDifficultyLevel(question.getDifficultyLevel());
                 questDTo.setId(question.getId());
 //                questDTo.setSubject(question.getSubject());
-                    questDTo.setOption( optionTexts);
-                    questDTolist.add(questDTo);
+                questDTo.setOption(optionTexts);
+                questDTolist.add(questDTo);
             }
             TestResult result = new TestResult();
             result.setSubject(subject);

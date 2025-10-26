@@ -1,0 +1,2425 @@
+{
+	"info": {
+		"_postman_id": "41f186d8-60f8-412a-990a-8c0ac131a150",
+		"name": "eProcurement API",
+		"description": "API documentation for the eProcurement project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31717043"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "Eprocurement",
+							"item": [
+								{
+									"name": "teacher",
+									"item": [
+										{
+											"name": "results",
+											"item": [
+												{
+													"name": "{resultId}",
+													"item": [
+														{
+															"name": "grade",
+															"item": [
+																{
+																	"name": "grade Result",
+																	"request": {
+																		"method": "PUT",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "*/*"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/api/v1/Eprocurement/teacher/results/:resultId/grade?marks=1817.405513802104&remarks=string&teacherId=2",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"api",
+																				"v1",
+																				"Eprocurement",
+																				"teacher",
+																				"results",
+																				":resultId",
+																				"grade"
+																			],
+																			"query": [
+																				{
+																					"key": "marks",
+																					"value": "1817.405513802104"
+																				},
+																				{
+																					"key": "remarks",
+																					"value": "string"
+																				},
+																				{
+																					"key": "teacherId",
+																					"value": "2"
+																				}
+																			],
+																			"variable": [
+																				{
+																					"key": "resultId",
+																					"value": "8751"
+																				}
+																			]
+																		}
+																	},
+																	"response": [
+																		{
+																			"name": "OK",
+																			"originalRequest": {
+																				"method": "PUT",
+																				"header": [
+																					{
+																						"key": "Accept",
+																						"value": "*/*"
+																					}
+																				],
+																				"url": {
+																					"raw": "{{baseUrl}}/api/v1/Eprocurement/teacher/results/:resultId/grade?marks=1817.405513802104&remarks=string&teacherId=8751",
+																					"host": [
+																						"{{baseUrl}}"
+																					],
+																					"path": [
+																						"api",
+																						"v1",
+																						"Eprocurement",
+																						"teacher",
+																						"results",
+																						":resultId",
+																						"grade"
+																					],
+																					"query": [
+																						{
+																							"key": "marks",
+																							"value": "1817.405513802104"
+																						},
+																						{
+																							"key": "remarks",
+																							"value": "string"
+																						},
+																						{
+																							"key": "teacherId",
+																							"value": "8751"
+																						}
+																					],
+																					"variable": [
+																						{
+																							"key": "resultId"
+																						}
+																					]
+																				}
+																			},
+																			"status": "OK",
+																			"code": 200,
+																			"_postman_previewlanguage": "text",
+																			"header": [
+																				{
+																					"key": "Content-Type",
+																					"value": "*/*"
+																				}
+																			],
+																			"cookie": [],
+																			"body": "{\n  \"id\": 6234,\n  \"student\": {\n    \"id\": 7106,\n    \"username\": \"string\",\n    \"password\": \"string\",\n    \"email\": \"string\",\n    \"fullName\": \"string\",\n    \"role\": \"TEACHER\",\n    \"active\": true,\n    \"createdAt\": \"1950-10-05T00:36:42.306Z\",\n    \"updatedAt\": \"2010-12-29T11:17:36.325Z\",\n    \"department\": {\n      \"id\": 2001,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"active\": false,\n      \"createdAt\": \"1952-08-29T18:25:26.887Z\",\n      \"isDelete\": true\n    },\n    \"teacher\": {\n      \"id\": 7307,\n      \"username\": \"string\",\n      \"password\": \"string\",\n      \"email\": \"string\",\n      \"fullName\": \"string\",\n      \"role\": \"ADMIN\",\n      \"active\": true,\n      \"createdAt\": \"1960-08-11T09:49:54.164Z\",\n      \"updatedAt\": \"1995-01-25T23:01:23.844Z\",\n      \"department\": {\n        \"id\": 8166,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"active\": true,\n        \"createdAt\": \"1976-10-28T19:30:08.639Z\",\n        \"isDelete\": true\n      },\n      \"specialization\": \"string\",\n      \"employeeId\": \"string\",\n      \"students\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Student detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Student detected>\"\n        }\n      ]\n    },\n    \"studentId\": \"string\",\n    \"enrollmentYear\": \"string\",\n    \"testResults\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/TestResult detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/TestResult detected>\"\n      }\n    ]\n  },\n  \"subject\": {\n    \"id\": 2473,\n    \"name\": \"string\",\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"totalMarks\": 8083,\n    \"passingMarks\": 6041,\n    \"active\": true,\n    \"createdAt\": \"1949-03-28T15:19:29.377Z\"\n  },\n  \"totalQuestions\": 55,\n  \"attemptedQuestions\": 5777,\n  \"correctAnswers\": 7042,\n  \"wrongAnswers\": 9698,\n  \"marksObtained\": 3364.483593060332,\n  \"totalMarks\": 7806.1094611251765,\n  \"percentage\": 4973.642914892324,\n  \"status\": \"IN_PROGRESS\",\n  \"gradedBy\": {\n    \"id\": 7334,\n    \"username\": \"string\",\n    \"password\": \"string\",\n    \"email\": \"string\",\n    \"fullName\": \"string\",\n    \"role\": \"TEACHER\",\n    \"active\": true,\n    \"createdAt\": \"2015-05-08T22:35:20.083Z\",\n    \"updatedAt\": \"2009-03-25T05:27:25.865Z\",\n    \"department\": {\n      \"id\": 3634,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"active\": false,\n      \"createdAt\": \"1998-04-17T03:19:55.155Z\",\n      \"isDelete\": false\n    },\n    \"specialization\": \"string\",\n    \"employeeId\": \"string\",\n    \"students\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Student detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Student detected>\"\n      }\n    ]\n  },\n  \"teacherRemarks\": \"string\",\n  \"studentAnswers\": [\n    {\n      \"id\": 9702,\n      \"isCorrect\": false,\n      \"marksAwarded\": 6436.223467925284,\n      \"answeredAt\": \"1966-09-30T12:48:23.305Z\"\n    },\n    {\n      \"id\": 8025,\n      \"isCorrect\": true,\n      \"marksAwarded\": 8405.471191415067,\n      \"answeredAt\": \"1980-06-09T16:22:43.258Z\"\n    }\n  ],\n  \"startedAt\": \"1961-05-08T09:22:51.548Z\",\n  \"submittedAt\": \"2021-10-15T08:18:50.591Z\",\n  \"updatedAt\": \"2023-03-26T17:08:28.576Z\"\n}"
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "{studnetId}",
+											"item": [
+												{
+													"name": "student",
+													"item": [
+														{
+															"name": "get Test Result By Department",
+															"request": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/teacher/:studnetId/student?teacherId=8751",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"teacher",
+																		":studnetId",
+																		"student"
+																	],
+																	"query": [
+																		{
+																			"key": "teacherId",
+																			"value": "8751"
+																		}
+																	],
+																	"variable": [
+																		{
+																			"key": "studnetId",
+																			"value": "8751"
+																		}
+																	]
+																}
+															},
+															"response": [
+																{
+																	"name": "OK",
+																	"originalRequest": {
+																		"method": "GET",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "*/*"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/api/v1/Eprocurement/teacher/:studnetId/student?teacherId=8751",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"api",
+																				"v1",
+																				"Eprocurement",
+																				"teacher",
+																				":studnetId",
+																				"student"
+																			],
+																			"query": [
+																				{
+																					"key": "teacherId",
+																					"value": "8751"
+																				}
+																			],
+																			"variable": [
+																				{
+																					"key": "studnetId"
+																				}
+																			]
+																		}
+																	},
+																	"status": "OK",
+																	"code": 200,
+																	"_postman_previewlanguage": "text",
+																	"header": [
+																		{
+																			"key": "Content-Type",
+																			"value": "*/*"
+																		}
+																	],
+																	"cookie": [],
+																	"body": "[\n  {\n    \"id\": 3043,\n    \"subjectName\": \"string\",\n    \"totalQuestions\": 3747,\n    \"attemptedQuestions\": 1863,\n    \"correctAnswers\": 8765,\n    \"wrongAnswers\": 3955,\n    \"marksObtained\": 6370.327742732016,\n    \"totalMarks\": 2293.6227380018213,\n    \"percentage\": 1118.2575814016204,\n    \"status\": \"string\",\n    \"submittedAt\": \"1999-05-24T11:56:21.084Z\",\n    \"teacherRemarks\": \"string\"\n  },\n  {\n    \"id\": 6644,\n    \"subjectName\": \"string\",\n    \"totalQuestions\": 6051,\n    \"attemptedQuestions\": 7953,\n    \"correctAnswers\": 9169,\n    \"wrongAnswers\": 6995,\n    \"marksObtained\": 1318.5453037367245,\n    \"totalMarks\": 7753.182736029125,\n    \"percentage\": 6337.2535546625895,\n    \"status\": \"string\",\n    \"submittedAt\": \"2014-10-18T04:21:32.152Z\",\n    \"teacherRemarks\": \"string\"\n  }\n]"
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "teacher",
+											"item": [
+												{
+													"name": "{departmentId}",
+													"item": [
+														{
+															"name": "student",
+															"item": [
+																{
+																	"name": "get Student By Department",
+																	"request": {
+																		"method": "GET",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "*/*"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/api/v1/Eprocurement/teacher/teacher/:departmentId/student",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"api",
+																				"v1",
+																				"Eprocurement",
+																				"teacher",
+																				"teacher",
+																				":departmentId",
+																				"student"
+																			],
+																			"variable": [
+																				{
+																					"key": "departmentId",
+																					"value": "8751"
+																				}
+																			]
+																		}
+																	},
+																	"response": [
+																		{
+																			"name": "OK",
+																			"originalRequest": {
+																				"method": "GET",
+																				"header": [
+																					{
+																						"key": "Accept",
+																						"value": "*/*"
+																					}
+																				],
+																				"url": {
+																					"raw": "{{baseUrl}}/api/v1/Eprocurement/teacher/teacher/:departmentId/student",
+																					"host": [
+																						"{{baseUrl}}"
+																					],
+																					"path": [
+																						"api",
+																						"v1",
+																						"Eprocurement",
+																						"teacher",
+																						"teacher",
+																						":departmentId",
+																						"student"
+																					],
+																					"variable": [
+																						{
+																							"key": "departmentId"
+																						}
+																					]
+																				}
+																			},
+																			"status": "OK",
+																			"code": 200,
+																			"_postman_previewlanguage": "text",
+																			"header": [
+																				{
+																					"key": "Content-Type",
+																					"value": "*/*"
+																				}
+																			],
+																			"cookie": [],
+																			"body": "[\n  {\n    \"id\": 5965,\n    \"username\": \"string\",\n    \"password\": \"string\",\n    \"email\": \"string\",\n    \"fullName\": \"string\",\n    \"role\": \"ADMIN\",\n    \"active\": true,\n    \"createdAt\": \"1969-08-19T05:43:54.019Z\",\n    \"updatedAt\": \"1961-05-10T06:48:26.233Z\",\n    \"department\": {\n      \"id\": 7388,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"active\": true,\n      \"createdAt\": \"2009-02-10T07:16:17.077Z\",\n      \"isDelete\": true\n    },\n    \"teacher\": {\n      \"id\": 6786,\n      \"username\": \"string\",\n      \"password\": \"string\",\n      \"email\": \"string\",\n      \"fullName\": \"string\",\n      \"role\": \"STUDENT\",\n      \"active\": true,\n      \"createdAt\": \"1976-10-15T16:25:29.372Z\",\n      \"updatedAt\": \"1998-08-26T06:45:53.139Z\",\n      \"department\": {\n        \"id\": 6595,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"active\": false,\n        \"createdAt\": \"1952-04-05T00:37:00.220Z\",\n        \"isDelete\": true\n      },\n      \"specialization\": \"string\",\n      \"employeeId\": \"string\",\n      \"students\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Student detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Student detected>\"\n        }\n      ]\n    },\n    \"studentId\": \"string\",\n    \"enrollmentYear\": \"string\",\n    \"testResults\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/TestResult detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/TestResult detected>\"\n      }\n    ]\n  },\n  {\n    \"id\": 793,\n    \"username\": \"string\",\n    \"password\": \"string\",\n    \"email\": \"string\",\n    \"fullName\": \"string\",\n    \"role\": \"ADMIN\",\n    \"active\": true,\n    \"createdAt\": \"2006-03-14T02:43:07.127Z\",\n    \"updatedAt\": \"1964-04-24T18:51:39.304Z\",\n    \"department\": {\n      \"id\": 171,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"active\": true,\n      \"createdAt\": \"1975-09-12T13:49:24.677Z\",\n      \"isDelete\": false\n    },\n    \"teacher\": {\n      \"id\": 2380,\n      \"username\": \"string\",\n      \"password\": \"string\",\n      \"email\": \"string\",\n      \"fullName\": \"string\",\n      \"role\": \"STUDENT\",\n      \"active\": false,\n      \"createdAt\": \"2003-08-19T08:53:53.698Z\",\n      \"updatedAt\": \"1949-04-07T09:09:52.119Z\",\n      \"department\": {\n        \"id\": 5961,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"active\": true,\n        \"createdAt\": \"1986-12-11T13:33:03.915Z\",\n        \"isDelete\": true\n      },\n      \"specialization\": \"string\",\n      \"employeeId\": \"string\",\n      \"students\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Student detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Student detected>\"\n        }\n      ]\n    },\n    \"studentId\": \"string\",\n    \"enrollmentYear\": \"string\",\n    \"testResults\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/TestResult detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/TestResult detected>\"\n      }\n    ]\n  }\n]"
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "subjects",
+											"item": [
+												{
+													"name": "{subjectId}",
+													"item": [
+														{
+															"name": "questions",
+															"item": [
+																{
+																	"name": "get Questions",
+																	"request": {
+																		"method": "GET",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "*/*"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/api/v1/Eprocurement/teacher/subjects/:subjectId/questions",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"api",
+																				"v1",
+																				"Eprocurement",
+																				"teacher",
+																				"subjects",
+																				":subjectId",
+																				"questions"
+																			],
+																			"variable": [
+																				{
+																					"key": "subjectId",
+																					"value": "8751"
+																				}
+																			]
+																		}
+																	},
+																	"response": [
+																		{
+																			"name": "OK",
+																			"originalRequest": {
+																				"method": "GET",
+																				"header": [
+																					{
+																						"key": "Accept",
+																						"value": "*/*"
+																					}
+																				],
+																				"url": {
+																					"raw": "{{baseUrl}}/api/v1/Eprocurement/teacher/subjects/:subjectId/questions",
+																					"host": [
+																						"{{baseUrl}}"
+																					],
+																					"path": [
+																						"api",
+																						"v1",
+																						"Eprocurement",
+																						"teacher",
+																						"subjects",
+																						":subjectId",
+																						"questions"
+																					],
+																					"variable": [
+																						{
+																							"key": "subjectId"
+																						}
+																					]
+																				}
+																			},
+																			"status": "OK",
+																			"code": 200,
+																			"_postman_previewlanguage": "text",
+																			"header": [
+																				{
+																					"key": "Content-Type",
+																					"value": "*/*"
+																				}
+																			],
+																			"cookie": [],
+																			"body": "[\n  {\n    \"id\": 6056,\n    \"questionText\": \"string\",\n    \"difficultyLevel\": \"HARD\",\n    \"marks\": 3422,\n    \"active\": false,\n    \"createdAt\": \"2019-07-11T16:58:31.215Z\"\n  },\n  {\n    \"id\": 4577,\n    \"questionText\": \"string\",\n    \"difficultyLevel\": \"HARD\",\n    \"marks\": 6186,\n    \"active\": true,\n    \"createdAt\": \"2024-04-05T08:31:27.643Z\"\n  }\n]"
+																		}
+																	]
+																}
+															]
+														}
+													]
+												},
+												{
+													"name": "{departmentId}",
+													"item": [
+														{
+															"name": "get Subjects",
+															"request": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/teacher/subjects/:departmentId",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"teacher",
+																		"subjects",
+																		":departmentId"
+																	],
+																	"variable": [
+																		{
+																			"key": "departmentId",
+																			"value": "8751"
+																		}
+																	]
+																}
+															},
+															"response": [
+																{
+																	"name": "OK",
+																	"originalRequest": {
+																		"method": "GET",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "*/*"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/api/v1/Eprocurement/teacher/subjects/:departmentId",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"api",
+																				"v1",
+																				"Eprocurement",
+																				"teacher",
+																				"subjects",
+																				":departmentId"
+																			],
+																			"variable": [
+																				{
+																					"key": "departmentId"
+																				}
+																			]
+																		}
+																	},
+																	"status": "OK",
+																	"code": 200,
+																	"_postman_previewlanguage": "text",
+																	"header": [
+																		{
+																			"key": "Content-Type",
+																			"value": "*/*"
+																		}
+																	],
+																	"cookie": [],
+																	"body": "{}"
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "assigndepartment",
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "password",
+															"value": "admin@123",
+															"type": "string"
+														},
+														{
+															"key": "username",
+															"value": "adminuser",
+															"type": "string"
+														}
+													]
+												},
+												"method": "PUT",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:30080/api/v1/Eprocurement/teacher/teacher/assign/department?deparmentId=2&teacherId=3",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "30080",
+													"path": [
+														"api",
+														"v1",
+														"Eprocurement",
+														"teacher",
+														"teacher",
+														"assign",
+														"department"
+													],
+													"query": [
+														{
+															"key": "deparmentId",
+															"value": "2"
+														},
+														{
+															"key": "teacherId",
+															"value": "3"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "departments",
+									"item": [
+										{
+											"name": "{id}",
+											"item": [
+												{
+													"name": "get By Id",
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Eprocurement/departments/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Eprocurement",
+																"departments",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": "8751"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/departments/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"departments",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "id"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"id\": 9470,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"active\": true\n}"
+														}
+													]
+												},
+												{
+													"name": "update",
+													"request": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": 9470,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"active\": true\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Eprocurement/departments/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Eprocurement",
+																"departments",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": "8751"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "PUT",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"id\": 9470,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"active\": true\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/departments/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"departments",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "id"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"responseMessege\": \"string\",\n  \"responseCode\": 2699,\n  \"data\": {}\n}"
+														}
+													]
+												},
+												{
+													"name": "delete",
+													"request": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Eprocurement/departments/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Eprocurement",
+																"departments",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": "8751"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/departments/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"departments",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "id"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"responseMessege\": \"string\",\n  \"responseCode\": 2699,\n  \"data\": {}\n}"
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "all",
+											"item": [
+												{
+													"name": "get All",
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Eprocurement/departments/all",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Eprocurement",
+																"departments",
+																"all"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/departments/all",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"departments",
+																		"all"
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "[\n  {\n    \"id\": 7460,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"active\": true\n  },\n  {\n    \"id\": 9865,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"active\": true\n  }\n]"
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "student",
+									"item": [
+										{
+											"name": "quiz",
+											"item": [
+												{
+													"name": "{subjectId}",
+													"item": [
+														{
+															"name": "start",
+															"item": [
+																{
+																	"name": "start Quiz",
+																	"request": {
+																		"method": "POST",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "*/*"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/api/v1/Eprocurement/student/quiz/:subjectId/start?studentId=8751",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"api",
+																				"v1",
+																				"Eprocurement",
+																				"student",
+																				"quiz",
+																				":subjectId",
+																				"start"
+																			],
+																			"query": [
+																				{
+																					"key": "studentId",
+																					"value": "8751"
+																				}
+																			],
+																			"variable": [
+																				{
+																					"key": "subjectId",
+																					"value": "8751"
+																				}
+																			]
+																		}
+																	},
+																	"response": [
+																		{
+																			"name": "OK",
+																			"originalRequest": {
+																				"method": "POST",
+																				"header": [
+																					{
+																						"key": "Accept",
+																						"value": "*/*"
+																					}
+																				],
+																				"url": {
+																					"raw": "{{baseUrl}}/api/v1/Eprocurement/student/quiz/:subjectId/start?studentId=8751",
+																					"host": [
+																						"{{baseUrl}}"
+																					],
+																					"path": [
+																						"api",
+																						"v1",
+																						"Eprocurement",
+																						"student",
+																						"quiz",
+																						":subjectId",
+																						"start"
+																					],
+																					"query": [
+																						{
+																							"key": "studentId",
+																							"value": "8751"
+																						}
+																					],
+																					"variable": [
+																						{
+																							"key": "subjectId"
+																						}
+																					]
+																				}
+																			},
+																			"status": "OK",
+																			"code": 200,
+																			"_postman_previewlanguage": "text",
+																			"header": [
+																				{
+																					"key": "Content-Type",
+																					"value": "*/*"
+																				}
+																			],
+																			"cookie": [],
+																			"body": "{\n  \"quizId\": 2381,\n  \"subjectId\": 3412,\n  \"questions\": [\n    {\n      \"id\": 1035,\n      \"questionText\": \"string\",\n      \"difficultyLevel\": \"HARD\",\n      \"marks\": 9572,\n      \"active\": false,\n      \"createdAt\": \"1965-01-01T13:54:29.970Z\"\n    },\n    {\n      \"id\": 3768,\n      \"questionText\": \"string\",\n      \"difficultyLevel\": \"MEDIUM\",\n      \"marks\": 8418,\n      \"active\": false,\n      \"createdAt\": \"1975-10-08T10:15:06.096Z\"\n    }\n  ]\n}"
+																		}
+																	]
+																}
+															]
+														}
+													]
+												},
+												{
+													"name": "{quizId}",
+													"item": [
+														{
+															"name": "submit",
+															"item": [
+																{
+																	"name": "submit Quiz",
+																	"request": {
+																		"method": "POST",
+																		"header": [
+																			{
+																				"key": "Content-Type",
+																				"value": "application/json"
+																			},
+																			{
+																				"key": "Accept",
+																				"value": "*/*"
+																			}
+																		],
+																		"body": {
+																			"mode": "raw",
+																			"raw": "[\n  {\n    \"questionId\": 7,\n    \"selectedOption\": \"string\"\n  },\n  {\n    \"questionId\": 8,\n    \"selectedOption\": \"string\"\n  }\n]",
+																			"options": {
+																				"raw": {
+																					"headerFamily": "json",
+																					"language": "json"
+																				}
+																			}
+																		},
+																		"url": {
+																			"raw": "{{baseUrl}}/api/v1/Eprocurement/student/quiz/:quizId/submit",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"api",
+																				"v1",
+																				"Eprocurement",
+																				"student",
+																				"quiz",
+																				":quizId",
+																				"submit"
+																			],
+																			"variable": [
+																				{
+																					"key": "quizId",
+																					"value": "7"
+																				}
+																			]
+																		}
+																	},
+																	"response": [
+																		{
+																			"name": "OK",
+																			"originalRequest": {
+																				"method": "POST",
+																				"header": [
+																					{
+																						"key": "Content-Type",
+																						"value": "application/json"
+																					},
+																					{
+																						"key": "Accept",
+																						"value": "*/*"
+																					}
+																				],
+																				"body": {
+																					"mode": "raw",
+																					"raw": "[\n  {\n    \"questionId\": 4941,\n    \"selectedOption\": \"string\"\n  },\n  {\n    \"questionId\": 4522,\n    \"selectedOption\": \"string\"\n  }\n]",
+																					"options": {
+																						"raw": {
+																							"headerFamily": "json",
+																							"language": "json"
+																						}
+																					}
+																				},
+																				"url": {
+																					"raw": "{{baseUrl}}/api/v1/Eprocurement/student/quiz/:quizId/submit",
+																					"host": [
+																						"{{baseUrl}}"
+																					],
+																					"path": [
+																						"api",
+																						"v1",
+																						"Eprocurement",
+																						"student",
+																						"quiz",
+																						":quizId",
+																						"submit"
+																					],
+																					"variable": [
+																						{
+																							"key": "quizId"
+																						}
+																					]
+																				}
+																			},
+																			"status": "OK",
+																			"code": 200,
+																			"_postman_previewlanguage": "text",
+																			"header": [
+																				{
+																					"key": "Content-Type",
+																					"value": "*/*"
+																				}
+																			],
+																			"cookie": [],
+																			"body": "{\n  \"id\": 8724,\n  \"subjectName\": \"string\",\n  \"totalQuestions\": 5100,\n  \"attemptedQuestions\": 4149,\n  \"correctAnswers\": 2998,\n  \"wrongAnswers\": 920,\n  \"marksObtained\": 9255.786174344523,\n  \"totalMarks\": 279.66149784041994,\n  \"percentage\": 5332.21962461782,\n  \"status\": \"string\",\n  \"submittedAt\": \"1972-10-20T18:20:15.311Z\",\n  \"teacherRemarks\": \"string\"\n}"
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "subjects",
+											"item": [
+												{
+													"name": "get Available Subjects",
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Eprocurement/student/subjects?studentId=8751",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Eprocurement",
+																"student",
+																"subjects"
+															],
+															"query": [
+																{
+																	"key": "studentId",
+																	"value": "8751"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/student/subjects?studentId=8751",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"student",
+																		"subjects"
+																	],
+																	"query": [
+																		{
+																			"key": "studentId",
+																			"value": "8751"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "[\n  {\n    \"name\": \"string\",\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"totalMarks\": 9563,\n    \"passingMarks\": 2625,\n    \"active\": true,\n    \"departmentId\": 3918\n  },\n  {\n    \"name\": \"string\",\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"totalMarks\": 7463,\n    \"passingMarks\": 889,\n    \"active\": true,\n    \"departmentId\": 5152\n  }\n]"
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "student",
+											"item": [
+												{
+													"name": "scoreboard",
+													"item": [
+														{
+															"name": "get Student Score Board",
+															"request": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/student/student/scoreboard?studentId=8751",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"student",
+																		"student",
+																		"scoreboard"
+																	],
+																	"query": [
+																		{
+																			"key": "studentId",
+																			"value": "8751"
+																		}
+																	]
+																}
+															},
+															"response": [
+																{
+																	"name": "OK",
+																	"originalRequest": {
+																		"method": "GET",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "*/*"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/api/v1/Eprocurement/student/student/scoreboard?studentId=8751",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"api",
+																				"v1",
+																				"Eprocurement",
+																				"student",
+																				"student",
+																				"scoreboard"
+																			],
+																			"query": [
+																				{
+																					"key": "studentId",
+																					"value": "8751"
+																				}
+																			]
+																		}
+																	},
+																	"status": "OK",
+																	"code": 200,
+																	"_postman_previewlanguage": "text",
+																	"header": [
+																		{
+																			"key": "Content-Type",
+																			"value": "*/*"
+																		}
+																	],
+																	"cookie": [],
+																	"body": "[\n  {\n    \"id\": 3043,\n    \"subjectName\": \"string\",\n    \"totalQuestions\": 3747,\n    \"attemptedQuestions\": 1863,\n    \"correctAnswers\": 8765,\n    \"wrongAnswers\": 3955,\n    \"marksObtained\": 6370.327742732016,\n    \"totalMarks\": 2293.6227380018213,\n    \"percentage\": 1118.2575814016204,\n    \"status\": \"string\",\n    \"submittedAt\": \"1999-05-24T11:56:21.084Z\",\n    \"teacherRemarks\": \"string\"\n  },\n  {\n    \"id\": 6644,\n    \"subjectName\": \"string\",\n    \"totalQuestions\": 6051,\n    \"attemptedQuestions\": 7953,\n    \"correctAnswers\": 9169,\n    \"wrongAnswers\": 6995,\n    \"marksObtained\": 1318.5453037367245,\n    \"totalMarks\": 7753.182736029125,\n    \"percentage\": 6337.2535546625895,\n    \"status\": \"string\",\n    \"submittedAt\": \"2014-10-18T04:21:32.152Z\",\n    \"teacherRemarks\": \"string\"\n  }\n]"
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "results",
+											"item": [
+												{
+													"name": "{id}",
+													"item": [
+														{
+															"name": "get My Results",
+															"request": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/student/results/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"student",
+																		"results",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "id",
+																			"value": "8751"
+																		}
+																	]
+																}
+															},
+															"response": [
+																{
+																	"name": "OK",
+																	"originalRequest": {
+																		"method": "GET",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "*/*"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/api/v1/Eprocurement/student/results/:id",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"api",
+																				"v1",
+																				"Eprocurement",
+																				"student",
+																				"results",
+																				":id"
+																			],
+																			"variable": [
+																				{
+																					"key": "id"
+																				}
+																			]
+																		}
+																	},
+																	"status": "OK",
+																	"code": 200,
+																	"_postman_previewlanguage": "text",
+																	"header": [
+																		{
+																			"key": "Content-Type",
+																			"value": "*/*"
+																		}
+																	],
+																	"cookie": [],
+																	"body": "[\n  {\n    \"id\": 3043,\n    \"subjectName\": \"string\",\n    \"totalQuestions\": 3747,\n    \"attemptedQuestions\": 1863,\n    \"correctAnswers\": 8765,\n    \"wrongAnswers\": 3955,\n    \"marksObtained\": 6370.327742732016,\n    \"totalMarks\": 2293.6227380018213,\n    \"percentage\": 1118.2575814016204,\n    \"status\": \"string\",\n    \"submittedAt\": \"1999-05-24T11:56:21.084Z\",\n    \"teacherRemarks\": \"string\"\n  },\n  {\n    \"id\": 6644,\n    \"subjectName\": \"string\",\n    \"totalQuestions\": 6051,\n    \"attemptedQuestions\": 7953,\n    \"correctAnswers\": 9169,\n    \"wrongAnswers\": 6995,\n    \"marksObtained\": 1318.5453037367245,\n    \"totalMarks\": 7753.182736029125,\n    \"percentage\": 6337.2535546625895,\n    \"status\": \"string\",\n    \"submittedAt\": \"2014-10-18T04:21:32.152Z\",\n    \"teacherRemarks\": \"string\"\n  }\n]"
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "auth",
+									"item": [
+										{
+											"name": "save",
+											"item": [
+												{
+													"name": "save User",
+													"request": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Eprocurement/auth/save?id=9968&username=string&password=string&email=string&fullName=string&role=TEACHER&active=false",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Eprocurement",
+																"auth",
+																"save"
+															],
+															"query": [
+																{
+																	"key": "id",
+																	"value": "9968"
+																},
+																{
+																	"key": "username",
+																	"value": "string"
+																},
+																{
+																	"key": "password",
+																	"value": "string"
+																},
+																{
+																	"key": "email",
+																	"value": "string"
+																},
+																{
+																	"key": "fullName",
+																	"value": "string"
+																},
+																{
+																	"key": "role",
+																	"value": "TEACHER"
+																},
+																{
+																	"key": "active",
+																	"value": "false"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/auth/save?id=9968&username=string&password=string&email=string&fullName=string&role=TEACHER&active=false",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"auth",
+																		"save"
+																	],
+																	"query": [
+																		{
+																			"key": "id",
+																			"value": "9968"
+																		},
+																		{
+																			"key": "username",
+																			"value": "string"
+																		},
+																		{
+																			"key": "password",
+																			"value": "string"
+																		},
+																		{
+																			"key": "email",
+																			"value": "string"
+																		},
+																		{
+																			"key": "fullName",
+																			"value": "string"
+																		},
+																		{
+																			"key": "role",
+																			"value": "TEACHER"
+																		},
+																		{
+																			"key": "active",
+																			"value": "false"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "string"
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "admin",
+									"item": [
+										{
+											"name": "teachers",
+											"item": [
+												{
+													"name": "get Teachers",
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Eprocurement/admin/teachers",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Eprocurement",
+																"admin",
+																"teachers"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/admin/teachers",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"admin",
+																		"teachers"
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"responseMessege\": \"string\",\n  \"responseCode\": 2699,\n  \"data\": {}\n}"
+														}
+													]
+												},
+												{
+													"name": "create Teacher",
+													"request": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": 4529,\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"email\": \"string\",\n  \"fullName\": \"string\",\n  \"role\": \"ADMIN\",\n  \"active\": false,\n  \"createdAt\": \"1952-12-23T03:07:39.246Z\",\n  \"updatedAt\": \"2000-01-04T19:42:49.298Z\",\n  \"employeeId\": \"string\",\n  \"specialization\": \"string\",\n  \"departmentId\": 8422\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Eprocurement/admin/teachers",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Eprocurement",
+																"admin",
+																"teachers"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"id\": 4529,\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"email\": \"string\",\n  \"fullName\": \"string\",\n  \"role\": \"ADMIN\",\n  \"active\": false,\n  \"createdAt\": \"1952-12-23T03:07:39.246Z\",\n  \"updatedAt\": \"2000-01-04T19:42:49.298Z\",\n  \"employeeId\": \"string\",\n  \"specialization\": \"string\",\n  \"departmentId\": 8422\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/admin/teachers",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"admin",
+																		"teachers"
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"responseMessege\": \"string\",\n  \"responseCode\": 2699,\n  \"data\": {}\n}"
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "subjects",
+											"item": [
+												{
+													"name": "questions",
+													"item": [
+														{
+															"name": "add Question",
+															"request": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"questionText\": \"string\",\n  \"difficultyLevel\": \"MEDIUM\",\n  \"marks\": 8275,\n  \"active\": false,\n  \"subjectId\": 8701,\n  \"answers\": [\n    {\n      \"answerText\": \"string\",\n      \"correct\": false\n    },\n    {\n      \"answerText\": \"string\",\n      \"correct\": false\n    }\n  ]\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/admin/subjects/questions",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"admin",
+																		"subjects",
+																		"questions"
+																	]
+																}
+															},
+															"response": [
+																{
+																	"name": "OK",
+																	"originalRequest": {
+																		"method": "POST",
+																		"header": [
+																			{
+																				"key": "Content-Type",
+																				"value": "application/json"
+																			},
+																			{
+																				"key": "Accept",
+																				"value": "*/*"
+																			}
+																		],
+																		"body": {
+																			"mode": "raw",
+																			"raw": "{\n  \"questionText\": \"string\",\n  \"difficultyLevel\": \"MEDIUM\",\n  \"marks\": 8275,\n  \"active\": false,\n  \"subjectId\": 8701,\n  \"answers\": [\n    {\n      \"answerText\": \"string\",\n      \"correct\": false\n    },\n    {\n      \"answerText\": \"string\",\n      \"correct\": false\n    }\n  ]\n}",
+																			"options": {
+																				"raw": {
+																					"headerFamily": "json",
+																					"language": "json"
+																				}
+																			}
+																		},
+																		"url": {
+																			"raw": "{{baseUrl}}/api/v1/Eprocurement/admin/subjects/questions",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"api",
+																				"v1",
+																				"Eprocurement",
+																				"admin",
+																				"subjects",
+																				"questions"
+																			]
+																		}
+																	},
+																	"status": "OK",
+																	"code": 200,
+																	"_postman_previewlanguage": "text",
+																	"header": [
+																		{
+																			"key": "Content-Type",
+																			"value": "*/*"
+																		}
+																	],
+																	"cookie": [],
+																	"body": "{}"
+																}
+															]
+														}
+													]
+												},
+												{
+													"name": "create Subject",
+													"request": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"name\": \"string\",\n  \"code\": \"string\",\n  \"description\": \"string\",\n  \"totalMarks\": 4312,\n  \"passingMarks\": 5902,\n  \"active\": true,\n  \"departmentId\": 2434\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Eprocurement/admin/subjects",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Eprocurement",
+																"admin",
+																"subjects"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"name\": \"string\",\n  \"code\": \"string\",\n  \"description\": \"string\",\n  \"totalMarks\": 4312,\n  \"passingMarks\": 5902,\n  \"active\": true,\n  \"departmentId\": 2434\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/admin/subjects",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"admin",
+																		"subjects"
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"responseMessege\": \"string\",\n  \"responseCode\": 2699,\n  \"data\": {}\n}"
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "departments",
+											"item": [
+												{
+													"name": "get Departments",
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Eprocurement/admin/departments",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Eprocurement",
+																"admin",
+																"departments"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/admin/departments",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"admin",
+																		"departments"
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"responseMessege\": \"string\",\n  \"responseCode\": 2699,\n  \"data\": {}\n}"
+														}
+													]
+												},
+												{
+													"name": "create Department",
+													"request": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": 9470,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"active\": true\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Eprocurement/admin/departments",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Eprocurement",
+																"admin",
+																"departments"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"id\": 9470,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"active\": true\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/admin/departments",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"admin",
+																		"departments"
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"id\": 9470,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"active\": true\n}"
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "creStud",
+											"item": [
+												{
+													"name": "create Teacher 1",
+													"request": {
+														"auth": {
+															"type": "basic",
+															"basic": [
+																{
+																	"key": "password",
+																	"value": "admin@123",
+																	"type": "string"
+																},
+																{
+																	"key": "username",
+																	"value": "adminuser",
+																	"type": "string"
+																}
+															]
+														},
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"id\": 7897,\n  \"name\": \"arjesh\",\n  \"email\": \"arjesh@gamil.com\",\n  \"role\": \"STUDENT\",\n  \"password\": \"arjesh\",\n  \"userName\": \"arjesh\",\n  \"studentId\": \"arjesh\",\n  \"enrollmentYear\": \"string\",\n  \"departmentId\": 2,\n  \"departmentName\": \"string\",\n  \"teacherId\": 2,\n  \"teacherName\": \"string\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Eprocurement/admin/creStud",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Eprocurement",
+																"admin",
+																"creStud"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"id\": 7897,\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"role\": \"string\",\n  \"password\": \"string\",\n  \"userName\": \"string\",\n  \"studentId\": \"string\",\n  \"enrollmentYear\": \"string\",\n  \"departmentId\": 5346,\n  \"departmentName\": \"string\",\n  \"teacherId\": 5615,\n  \"teacherName\": \"string\"\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/admin/creStud",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"admin",
+																		"creStud"
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"id\": 7897,\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"role\": \"string\",\n  \"password\": \"string\",\n  \"userName\": \"string\",\n  \"studentId\": \"string\",\n  \"enrollmentYear\": \"string\",\n  \"departmentId\": 5346,\n  \"departmentName\": \"string\",\n  \"teacherId\": 5615,\n  \"teacherName\": \"string\"\n}"
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "questions",
+									"item": [
+										{
+											"name": "{id}",
+											"item": [
+												{
+													"name": "get Question",
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Eprocurement/questions/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Eprocurement",
+																"questions",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": "8751"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/questions/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"questions",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "id"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"questionText\": \"string\",\n  \"difficultyLevel\": \"MEDIUM\",\n  \"marks\": 8275,\n  \"active\": false,\n  \"subjectId\": 8701,\n  \"answers\": [\n    {\n      \"answerText\": \"string\",\n      \"correct\": false\n    },\n    {\n      \"answerText\": \"string\",\n      \"correct\": false\n    }\n  ]\n}"
+														}
+													]
+												},
+												{
+													"name": "delete Question",
+													"request": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Eprocurement/questions/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Eprocurement",
+																"questions",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": "8751"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Eprocurement/questions/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Eprocurement",
+																		"questions",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "id"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [],
+															"cookie": [],
+															"body": ""
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Eprocurementsubjects",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "get Subject",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Eprocurementsubjects/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Eprocurementsubjects",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "8751"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Eprocurementsubjects/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Eprocurementsubjects",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "*/*"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": 291,\n  \"name\": \"string\",\n  \"code\": \"string\",\n  \"description\": \"string\",\n  \"totalMarks\": 5673,\n  \"passingMarks\": 3081,\n  \"active\": false,\n  \"createdAt\": \"1979-07-05T14:32:45.796Z\"\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "get All Subjects",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/Eprocurementsubjects",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"Eprocurementsubjects"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Eprocurementsubjects",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Eprocurementsubjects"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"id\": 9066,\n    \"name\": \"string\",\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"totalMarks\": 2715,\n    \"passingMarks\": 8936,\n    \"active\": false,\n    \"createdAt\": \"2005-09-05T20:42:18.788Z\"\n  },\n  {\n    \"id\": 2964,\n    \"name\": \"string\",\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"totalMarks\": 9629,\n    \"passingMarks\": 7147,\n    \"active\": false,\n    \"createdAt\": \"1950-09-02T09:33:46.937Z\"\n  }\n]"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:30080"
+		}
+	]
+}

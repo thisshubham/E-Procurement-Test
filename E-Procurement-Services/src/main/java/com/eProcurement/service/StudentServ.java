@@ -111,10 +111,15 @@ public class StudentServ {
              dto.setId(studentByStudentIdCode.getId());
              dto.setName(studentByStudentIdCode.getFullName());
              dto.setEmail(studentByStudentIdCode.getEmail());
-             dto.setDepartmentId(studentByStudentIdCode.getDepartment().getId());
-             dto.setDepartmentName(studentByStudentIdCode.getDepartment().getName());
-             dto.setTeacherId(studentByStudentIdCode.getTeacher().getId());
-             dto.setTeacherName(studentByStudentIdCode.getTeacher().getFullName());
+             if (studentByStudentIdCode.getDepartment() != null) {
+                 dto.setDepartmentId(studentByStudentIdCode.getDepartment().getId());
+                 dto.setDepartmentName(studentByStudentIdCode.getDepartment().getName());
+             }
+
+             if (studentByStudentIdCode.getTeacher() != null) {
+                 dto.setTeacherId(studentByStudentIdCode.getTeacher().getId());
+                 dto.setTeacherName(studentByStudentIdCode.getTeacher().getFullName());
+             }
              dto.setEnrollmentYear(studentByStudentIdCode.getEnrollmentYear());
              dto.setRole(studentByStudentIdCode.getRole().name());
              dto.setPassword(studentByStudentIdCode.getPassword());
