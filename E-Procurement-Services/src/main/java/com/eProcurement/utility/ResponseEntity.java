@@ -19,7 +19,16 @@ public class ResponseEntity {
                 return new org.springframework.http.ResponseEntity<>(response, HttpStatus.OK);
             } else if (responseCode.equals(Commonconstants.FAIL_STATUS)) {
                 return new org.springframework.http.ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-            } else if (responseCode.equals(HttpStatus.INTERNAL_SERVER_ERROR.value())) {
+            }
+            else if (responseCode.equals(HttpStatus.OK.value())) {
+                return new org.springframework.http.ResponseEntity<>(response, HttpStatus.OK);
+            }
+            else if (responseCode.equals(HttpStatus.NO_CONTENT.value())) {
+                return new org.springframework.http.ResponseEntity<>(response, HttpStatus.NO_CONTENT);
+            }
+            else if (responseCode.equals(HttpStatus.CREATED.value())) {
+                return new org.springframework.http.ResponseEntity<>(response, HttpStatus.CREATED);
+            }else if (responseCode.equals(HttpStatus.INTERNAL_SERVER_ERROR.value())) {
                 return new org.springframework.http.ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
             } else if (responseCode.equals(HttpStatus.NOT_FOUND.value())) {
                 return new org.springframework.http.ResponseEntity<>(response, HttpStatus.NOT_FOUND);

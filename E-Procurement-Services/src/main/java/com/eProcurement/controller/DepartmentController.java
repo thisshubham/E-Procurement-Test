@@ -28,13 +28,11 @@ public class DepartmentController {
     }
 
     @PutMapping(Commonconstants.ID)
-//    @PreAuthorize("hasRole('ADMIN')")
     public ResponseDto update(@PathVariable Long id, @RequestBody DepartmentDto dto) {
         return departmentService.updateDepartment(id, dto);
     }
 
     @DeleteMapping(Commonconstants.ID)
-//    @PreAuthorize("hasRole('ADMIN')")
     public ResponseDto delete(@PathVariable Long id) {
         return  departmentService.deleteDepartment(id);
     }

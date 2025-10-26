@@ -9,6 +9,7 @@ import com.eProcurement.repo.DepartmentRepo;
 import com.eProcurement.repo.StudentRepo;
 import com.eProcurement.repo.TeacherRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.stereotype.Service;
 
@@ -100,5 +101,10 @@ public class StudentServ {
     public List<Student> getStudentsByDepartmentId(Long departmentId) {
         List<Student> students = repo.findByDepartmentId(departmentId);
         return students;
+    }
+
+    public Student getStudails(String studentId) {
+
+        return studentRepo.findStudentByStudentIdCode(studentId);
     }
 }

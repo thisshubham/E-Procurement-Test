@@ -1,9 +1,6 @@
 package com.eProcurement.service;
 
-import com.eProcurement.dto.QuizDto;
-import com.eProcurement.dto.StudentAnswerDto;
-import com.eProcurement.dto.SubjectDto;
-import com.eProcurement.dto.TestResultDto;
+import com.eProcurement.dto.*;
 import com.eProcurement.entity.*;
 import com.eProcurement.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,9 +21,11 @@ public class QuizService {
 
     @Autowired
     private QuestionRepo questionRepo;
+    @Autowired
+    private AnswerRepo answerRepo;
 
     @Autowired
-    private TestResultRepo  testResultRepo;
+    private TestResultRepo testResultRepo;
 
     @Autowired
     private TestResultService testResultService;
@@ -37,8 +37,9 @@ public class QuizService {
 
     @Transactional
 
-    public QuizDto startQuiz(Long subjectId,Long studentId) {
-        QuizDto quiz = null;
+    public QuizDto startQuiz(Long subjectId, String studentId) {
+        QuizDto quiz = new QuizDto();
+
         try {
             Student student = studentRepo.findStudentByStudentIdCode(studentId);
 
@@ -46,7 +47,22 @@ public class QuizService {
                     .orElseThrow(() -> new RuntimeException("Subject not found"));
 
             List<Question> questions = questionRepo.findAllBySubject_Id(subjectId);
+            ArrayList<QuestDTo> questDTolist = new ArrayList<>();
 
+            for (Question question : questions) {
+                List<Answer> answers = answerRepo.findAllByQuestion_Id(question.getId());
+                QuestDTo questDTo = new QuestDTo();
+                List<String> optionTexts = answers.stream()
+                        .map(Answer::getAnswerText)
+                        .collect(Collectors.toList());
+                questDTo.setActive(question.getActive());
+                questDTo.setQuestionText(question.getQuestionText());
+                questDTo.setDifficultyLevel(question.getDifficultyLevel());
+                questDTo.setId(question.getId());
+//                questDTo.setSubject(question.getSubject());
+                    questDTo.setOption( optionTexts);
+                    questDTolist.add(questDTo);
+            }
             TestResult result = new TestResult();
             result.setSubject(subject);
             result.setTotalQuestions(questions.size());
@@ -57,10 +73,9 @@ public class QuizService {
 
             testResultRepo.save(result);
 
-            quiz = new QuizDto();
             quiz.setQuizId(result.getId());
             quiz.setSubjectId(subjectId);
-            quiz.setQuestions(questions);
+            quiz.setQuestDTos(questDTolist);
         } catch (RuntimeException e) {
             throw new RuntimeException(e);
         }
@@ -98,7 +113,7 @@ public class QuizService {
                 studentAnswer1.setQuestion(question);
                 studentAnswer1.setTestResult(result);
                 studentAnswerRepo.save(studentAnswer1);
-
+                result.setTotalMarks(Double.valueOf(question.getSubject().getTotalMarks()));
 
             }
 
@@ -136,10 +151,10 @@ public class QuizService {
                 .collect(Collectors.toList());
     }
 
-    public List<SubjectDto> getAvailableSubjects(Long studentId) {
+    public List<SubjectDto> getAvailableSubjects(String studentId) {
         List<Subject> subjects = null;
         try {
-            Student student = studentRepo.findStudentByStudentIdCode(studentId);
+            Student student = studentRepo.findStudentByStudentIdCode(studentId.toString());
 
             subjects = subjectRepo.findSubjectsByDepartment_Id(student.getDepartment().getId());
         } catch (Exception e) {

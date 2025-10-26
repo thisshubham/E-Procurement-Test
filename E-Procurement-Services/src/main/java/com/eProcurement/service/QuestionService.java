@@ -56,9 +56,11 @@ public class QuestionService {
                 }
 
                 question.setAnswers(answerEntities);
-                questionRepo.save(question);
+                 Question save = questionRepo.save(question);
                 response.put(Commonconstants.MESSAGE, "Successfully Created");
-                responseCode = HttpStatus.CREATED.value();
+                response.put("data",save );
+                return responseEntity.apiResponse(HttpStatus.CREATED.value(),response);
+
             }
 
         } catch (Exception e) {

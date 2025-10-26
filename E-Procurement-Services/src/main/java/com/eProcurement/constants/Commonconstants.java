@@ -18,6 +18,8 @@ public interface Commonconstants {
 //    public final String TEACHER_TESTRESULT_STUDENT = "/teacher/{departmentId}/student";
     public final String TEACHER_TESTRESULT_STUDENT = "/{studnetId}/student";
     public final String STUDENT_SCORE = "/student/scoreboard";
+    public final String TEACHER_ASSIGN_DEPARTMENT = "/teacher/assign/department";
+    public final String STUDENT_BY_ID = "/student/byId";
 
     public final String QUESTION = "/questions";
     public final String AUTH = "/auth";

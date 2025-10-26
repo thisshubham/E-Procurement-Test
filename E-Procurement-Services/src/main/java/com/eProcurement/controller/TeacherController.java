@@ -47,6 +47,10 @@ public class TeacherController {
     public ResponseEntity<List<Student>> getStudentByDepartment(@PathVariable("departmentId") Long deparmentId) {
         return ResponseEntity.ok(studentServ.getStudentsByDepartmentId(deparmentId));
     }
+    @PutMapping(Commonconstants.TEACHER_ASSIGN_DEPARTMENT)
+    public ResponseEntity<?> assignDepartment(@RequestParam Long deparmentId, @RequestParam Long teacherId) {
+        return ResponseEntity.ok(testResultService.assignDepartment(deparmentId,teacherId));
+    }
 
     @PutMapping(Commonconstants.RESULT_RESULTID_GRADDE)
     public ResponseEntity<TestResult> gradeResult(
@@ -59,7 +63,7 @@ public class TeacherController {
 
     }
     @GetMapping(Commonconstants.TEACHER_TESTRESULT_STUDENT)
-    public ResponseEntity<List<TestResultDto>> getTestResultByDepartment(@PathVariable("studnetId") Long studentId,
+    public ResponseEntity<List<TestResultDto>> getTestResultByDepartment(@PathVariable("studnetId") String studentId,
                                                                       @RequestParam Long teacherId ) {
         return ResponseEntity.ok(testResultService.getStudentResultsByDepartment(studentId,teacherId));
     }

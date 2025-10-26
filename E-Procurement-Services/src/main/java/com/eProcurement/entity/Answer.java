@@ -4,12 +4,14 @@ import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-@Entity
-@Table(name = "answers")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "question")
+@Entity
+@Table(name = "answers")
 public class Answer {
 
     @Id

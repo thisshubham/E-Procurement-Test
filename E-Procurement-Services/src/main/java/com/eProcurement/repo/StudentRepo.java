@@ -14,10 +14,15 @@ import java.util.Optional;
 public interface StudentRepo extends JpaRepository<Student, Long> {
     List<Student> findByDepartmentId(Long departmentId);
 
-    @Query(
-            value = "SELECT s.*, u.username, u.password, u.email, u.full_name, u.role, u.active, u.created_at, u.updated_at " +
-                    "FROM students s JOIN users u ON s.id = u.id " +
-            "WHERE s.student_id = :studentIdString",
-    nativeQuery = true)
-    Student findStudentByStudentIdCode(@Param("studentIdString") Long studentIdString);
+//    @Query(
+//            value = "SELECT s.*, u.username, u.password, u.email, u.full_name, u.role, u.active, u.created_at, u.updated_at " +
+//                    "FROM students s JOIN users u ON s.id = u.id " +
+//            "WHERE s.student_id = :studentIdString",
+//    nativeQuery = true)
+
+//    Student findStudentByStudentIdCode(@Param("studentIdString") Long studentIdString);
+
+    @Query("SELECT s FROM Student s WHERE s.studentId = :studentIdString")
+    Student findStudentByStudentIdCode(@Param("studentIdString") String studentIdString);
+
 }
