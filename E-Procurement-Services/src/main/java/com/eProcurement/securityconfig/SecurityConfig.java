@@ -40,12 +40,10 @@ public class SecurityConfig {
                         "/swagger-ui.html",
                         "/webjars/**"
                 ).permitAll()
-                // Role-based access
                 .antMatchers("/api/admin/**").hasRole("ADMIN")
                 .antMatchers("/api/teacher/**").hasRole("TEACHER")
                 .antMatchers("/api/student/**").hasRole("STUDENT")
 
-                // Everything else
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();
