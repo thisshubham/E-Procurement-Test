@@ -1,4 +1,4 @@
-# Quiz Management System - Spring Boot
+# Quiz Management System for E-Procurement - Spring Boot
 
 ## Prerequisites
 - Java 8
