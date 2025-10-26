@@ -24,12 +24,12 @@
 
 *application.properties:*
 properties
-server.port=8080
+server.port=30080
 
 # MySQL
 spring.datasource.url=jdbc:mysql://localhost:3306/aprocurementTest?allowPublicKeyRetrieval=true&useSSL=false&autoreconnect=true&createDatabaseIfNotExist=true
-spring.datasource.username=quiz_user
-spring.datasource.password=quiz123
+spring.datasource.username=root
+spring.datasource.password=root
 
 
 spring.jpa.hibernate.ddl-auto=update
