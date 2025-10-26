@@ -14,4 +14,5 @@ public class TeacherDto extends Admin {
     private String employeeId;
     private String specialization;
     private Long departmentId;
+//    private String role;
 }

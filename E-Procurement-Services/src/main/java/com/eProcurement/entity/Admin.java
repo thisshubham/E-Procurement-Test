@@ -50,10 +50,21 @@ public class Admin {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    public Admin(AdminDto dto) {
-    }
 
     public enum Role {
         ADMIN, TEACHER, STUDENT
+    }
+    public Admin(AdminDto dto) {
+        this.id = dto.getId();
+        this.username = dto.getUsername();
+        this.password = dto.getPassword();
+        this.email = dto.getEmail();
+        this.fullName = dto.getFullName();
+
+        if (dto.getRole() != null) {
+            this.role = Role.valueOf(dto.getRole().name());
+        }
+
+        this.active = dto.getActive();
     }
 }

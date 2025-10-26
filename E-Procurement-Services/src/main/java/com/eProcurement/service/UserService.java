@@ -2,29 +2,30 @@ package com.eProcurement.service;
 
 import com.eProcurement.dto.AdminDto;
 import com.eProcurement.dto.TeacherDto;
+import com.eProcurement.entity.Admin;
 import com.eProcurement.entity.Department;
 import com.eProcurement.entity.Teacher;
 import com.eProcurement.repo.DepartmentRepo;
 import com.eProcurement.repo.TeacherRepo;
+import com.eProcurement.repo.UserRepo;
 import com.eProcurement.utility.ResponseDto;
-import org.omg.CORBA.Object;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserService  {
     @Autowired
     private DepartmentRepo departmentRepo;
     @Autowired
     private TeacherRepo teacherRepo;
+
+    @Autowired
+    private UserRepo userRepo;
 
     public ResponseDto createTeacher(TeacherDto request) {
         ResponseDto responseDto = new ResponseDto();
@@ -90,4 +91,35 @@ public class UserService {
         }
         return responseDto;
     }
+
+    public Admin findByUserName(String username) {
+        if (username == null || username.trim().isEmpty()) {
+            return null;
+        }
+        try {
+            Admin adminUser = userRepo.findByUsername(username);
+            if (adminUser == null) {
+                System.out.println("Admin not found for username: " + username);
+            }
+            return adminUser;
+        } catch (Exception e) {
+            System.err.println("Error finding admin by username: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public Admin saveUser(AdminDto user) {
+        if (user == null) {
+            return null;
+        }
+        try {
+            Admin admin = new Admin(user);
+            Admin savedAdmin = userRepo.save(admin);
+            return savedAdmin;
+        } catch (Exception e) {
+            System.err.println("Error saving admin: " + e.getMessage());
+            return null;
+        }
+    }
+
 }

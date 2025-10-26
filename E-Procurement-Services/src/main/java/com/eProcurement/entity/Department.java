@@ -19,7 +19,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"teachers", "students"})
+@ToString(exclude = {"teachers", "students", "subjects"})
 public class Department {
 
     @Id

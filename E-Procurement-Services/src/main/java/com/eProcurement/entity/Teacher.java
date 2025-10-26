@@ -11,10 +11,10 @@ import java.util.List;
 @Entity
 @Table(name = "teachers")
 @Data
-@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"department", "students"})
+@ToString(exclude = {"department", "students", "gradedResults"})
+@EqualsAndHashCode(callSuper = true, exclude = {"department", "students", "gradedResults"})
 public class Teacher extends Admin {
 
     @ManyToOne(fetch = FetchType.LAZY)

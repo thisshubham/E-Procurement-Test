@@ -13,7 +13,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"department", "teacher"})
+@ToString(exclude = {"department", "teacher",})
 public class Student extends Admin {
 
     @ManyToOne(fetch = FetchType.LAZY)
