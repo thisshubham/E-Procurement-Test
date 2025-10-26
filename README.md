@@ -90,7 +90,7 @@ java -jar build/libs/E-Procurement-Services-1.0-SNAPSHOT.jar
 | **ADMIN**                    | `/api/v1/Eprocurement/admin/**`<br>`/api/v1/Eprocurement/teacher/**`<br>`/api/v1/Eprocurement/student/**` | Full control – can manage departments, teachers, and students. |
 | **TEACHER**                  | `/api/v1/Eprocurement/teacher/**`<br>`/api/v1/Eprocurement/student/**`                                    | Can manage subjects, view and grade students.                  |
 | **STUDENT**                  | `/api/v1/Eprocurement/student/**`                                                                         | Can view personal results, subjects, and test records.         |
-| **PUBLIC (Unauthenticated)** | `/api/v1/Eprocurement/auth/**`                                                                            | Registration and login endpoints only.                         |
+| **PUBLIC (Unauthenticated)** | `/api/v1/Eprocurement/auth/**`                                                                            | Registration  endpoints only.                         |
 
 ## Business Rules
 
