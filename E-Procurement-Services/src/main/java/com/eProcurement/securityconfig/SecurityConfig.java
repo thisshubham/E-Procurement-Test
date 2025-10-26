@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/v1/Eprocurement/api/v1/auth/save/**").permitAll()
+                .antMatchers("/api/v1/Eprocurement/auth/**").permitAll()
                 .antMatchers(
                         "/v2/api-docs",
                         "/v3/api-docs/**",
@@ -40,9 +40,9 @@ public class SecurityConfig {
                         "/swagger-ui.html",
                         "/webjars/**"
                 ).permitAll()
-                .antMatchers("/api/admin/**").hasRole("ADMIN")
-                .antMatchers("/api/teacher/**").hasRole("TEACHER")
-                .antMatchers("/api/student/**").hasRole("STUDENT")
+                .antMatchers("/api/v1/Eprocurement/admin/**").hasRole("ADMIN")
+                .antMatchers("/api/v1/Eprocurement/teacher/**").hasAnyRole("ADMIN", "TEACHER")
+                .antMatchers("/api/v1/Eprocurement/student/**").hasAnyRole("ADMIN","TEACHER", "STUDENT")
 
                 .anyRequest().authenticated()
                 .and()

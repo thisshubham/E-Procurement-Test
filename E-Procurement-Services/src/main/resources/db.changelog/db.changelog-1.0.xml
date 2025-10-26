@@ -6,5 +6,498 @@
            http://www.liquibase.org/xml/ns/dbchangelog
            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
+    <changeSet id="1-create-users-table" author="subham">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="users"/>
+            </not>
+        </preConditions>
+        <createTable tableName="users">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="full_name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="active" type="BOOLEAN" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="users"/>
+        </rollback>
+    </changeSet>
 
+    <!-- 2. Departments Table -->
+    <changeSet id="2-create-departments-table" author="subham">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="departments"/>
+            </not>
+        </preConditions>
+        <createTable tableName="departments">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="description" type="VARCHAR(500)"/>
+            <column name="active" type="BOOLEAN" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_delete" type="BOOLEAN"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="departments"/>
+        </rollback>
+    </changeSet>
+
+    <!-- 3. Teachers Table -->
+    <changeSet id="3-create-teachers-table" author="subham">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="teachers"/>
+            </not>
+        </preConditions>
+        <createTable tableName="teachers">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="department_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="specialization" type="VARCHAR(50)"/>
+            <column name="employee_id" type="VARCHAR(20)"/>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="teachers" baseColumnNames="id"
+                                 referencedTableName="users" referencedColumnNames="id"
+                                 constraintName="fk_teachers_users"/>
+        <addForeignKeyConstraint baseTableName="teachers" baseColumnNames="department_id"
+                                 referencedTableName="departments" referencedColumnNames="id"
+                                 constraintName="fk_teachers_departments"/>
+        <rollback>
+            <dropTable tableName="teachers"/>
+        </rollback>
+    </changeSet>
+
+    <!-- 4. Students Table -->
+    <changeSet id="4-create-students-table" author="subham">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="students"/>
+            </not>
+        </preConditions>
+        <createTable tableName="students">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="department_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="teacher_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="student_id" type="VARCHAR(20)"/>
+            <column name="enrollment_year" type="VARCHAR(20)"/>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="students" baseColumnNames="id"
+                                 referencedTableName="users" referencedColumnNames="id"
+                                 constraintName="fk_students_users"/>
+        <addForeignKeyConstraint baseTableName="students" baseColumnNames="department_id"
+                                 referencedTableName="departments" referencedColumnNames="id"
+                                 constraintName="fk_students_departments"/>
+        <addForeignKeyConstraint baseTableName="students" baseColumnNames="teacher_id"
+                                 referencedTableName="teachers" referencedColumnNames="id"
+                                 constraintName="fk_students_teachers"/>
+        <rollback>
+            <dropTable tableName="students"/>
+        </rollback>
+    </changeSet>
+
+    <!-- 5. Subjects Table -->
+    <changeSet id="5-create-subjects-table" author="subham">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="subjects"/>
+            </not>
+        </preConditions>
+        <createTable tableName="subjects">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="code" type="VARCHAR(20)"/>
+            <column name="description" type="VARCHAR(500)"/>
+            <column name="department_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_marks" type="INT" defaultValueNumeric="100">
+                <constraints nullable="false"/>
+            </column>
+            <column name="passing_marks" type="INT" defaultValueNumeric="40">
+                <constraints nullable="false"/>
+            </column>
+            <column name="active" type="BOOLEAN" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="subjects" baseColumnNames="department_id"
+                                 referencedTableName="departments" referencedColumnNames="id"
+                                 constraintName="fk_subjects_departments"/>
+        <rollback>
+            <dropTable tableName="subjects"/>
+        </rollback>
+    </changeSet>
+
+    <!-- 6. TestResults Table -->
+    <changeSet id="6-create-test-results-table" author="subham">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="test_results"/>
+            </not>
+        </preConditions>
+        <createTable tableName="test_results">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="student_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subject_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_questions" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="attempted_questions" type="INT" defaultValueNumeric="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="correct_answers" type="INT" defaultValueNumeric="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="wrong_answers" type="INT" defaultValueNumeric="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="marks_obtained" type="DOUBLE" defaultValueNumeric="0.0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_marks" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="percentage" type="DOUBLE" defaultValueNumeric="0.0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(20)" defaultValue="IN_PROGRESS">
+                <constraints nullable="false"/>
+            </column>
+            <column name="graded_by" type="BIGINT"/>
+            <column name="teacher_remarks" type="VARCHAR(1000)"/>
+            <column name="started_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="submitted_at" type="TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="test_results" baseColumnNames="student_id"
+                                 referencedTableName="students" referencedColumnNames="id"
+                                 constraintName="fk_testresults_students"/>
+        <addForeignKeyConstraint baseTableName="test_results" baseColumnNames="subject_id"
+                                 referencedTableName="subjects" referencedColumnNames="id"
+                                 constraintName="fk_testresults_subjects"/>
+        <addForeignKeyConstraint baseTableName="test_results" baseColumnNames="graded_by"
+                                 referencedTableName="teachers" referencedColumnNames="id"
+                                 constraintName="fk_testresults_teachers"/>
+        <rollback>
+            <dropTable tableName="test_results"/>
+        </rollback>
+    </changeSet>
+
+    <!-- 7. Questions Table -->
+    <changeSet id="7-create-questions-table" author="subham">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="questions"/>
+            </not>
+        </preConditions>
+        <createTable tableName="questions">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="question_text" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subject_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="difficulty_level" type="VARCHAR(20)" defaultValue="MEDIUM">
+                <constraints nullable="false"/>
+            </column>
+            <column name="marks" type="INT" defaultValueNumeric="1">
+                <constraints nullable="false"/>
+            </column>
+            <column name="active" type="BOOLEAN" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="questions" baseColumnNames="subject_id"
+                                 referencedTableName="subjects" referencedColumnNames="id"
+                                 constraintName="fk_questions_subjects"/>
+        <rollback>
+            <dropTable tableName="questions"/>
+        </rollback>
+    </changeSet>
+
+    <!-- 8. Answers Table -->
+    <changeSet id="8-create-answers-table" author="subham">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="answers"/>
+            </not>
+        </preConditions>
+        <createTable tableName="answers">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="answer_text" type="VARCHAR(500)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_correct" type="BOOLEAN" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="question_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="option_order" type="INT" defaultValueNumeric="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="answers" baseColumnNames="question_id"
+                                 referencedTableName="questions" referencedColumnNames="id"
+                                 constraintName="fk_answers_questions"/>
+        <rollback>
+            <dropTable tableName="answers"/>
+        </rollback>
+    </changeSet>
+
+    <!-- 9. StudentAnswers Table -->
+    <changeSet id="9-create-student-answers-table" author="subham">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="student_answers"/>
+            </not>
+        </preConditions>
+        <createTable tableName="student_answers">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="test_result_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="question_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="selected_answer_id" type="BIGINT"/>
+            <column name="is_correct" type="BOOLEAN" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="marks_awarded" type="DOUBLE" defaultValueNumeric="0.0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="answered_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="student_answers" baseColumnNames="test_result_id"
+                                 referencedTableName="test_results" referencedColumnNames="id"
+                                 constraintName="fk_studentanswers_testresults"/>
+        <addForeignKeyConstraint baseTableName="student_answers" baseColumnNames="question_id"
+                                 referencedTableName="questions" referencedColumnNames="id"
+                                 constraintName="fk_studentanswers_questions"/>
+        <addForeignKeyConstraint baseTableName="student_answers" baseColumnNames="selected_answer_id"
+                                 referencedTableName="answers" referencedColumnNames="id"
+                                 constraintName="fk_studentanswers_answers"/>
+        <rollback>
+            <dropTable tableName="student_answers"/>
+        </rollback>
+    </changeSet>
+
+
+
+    <changeSet id="insert-initial-departments-data0001" author="Subham Patel">
+        <preConditions onFail="MARK_RAN">
+            <tableIsEmpty tableName="departments"/>
+        </preConditions>
+
+        <comment>Inserting initial department data based on the provided JSON list, only if the table is empty.
+        </comment>
+        <insert tableName="departments">
+            <column name="name" value="Mechanical Science"/>
+            <column name="description"
+                    value="The study of the design, analysis, manufacturing, and maintenance of mechanical systems."/>
+            <column name="active" valueBoolean="true"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="is_delete" valueBoolean="false"/>
+        </insert>
+
+        <insert tableName="departments">
+            <column name="name" value="Computer Science and Engineering"/>
+            <column name="description"
+                    value="The department dedicated to the theory, design, development, and application of computer systems and software."/>
+            <column name="active" valueBoolean="true"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="is_delete" valueBoolean="false"/>
+        </insert>
+
+
+    </changeSet>
+
+    <changeSet id="insert-initial-teachers-data-0002" author="Subham patel">
+        <preConditions onFail="MARK_RAN">
+            <tableIsEmpty tableName="teachers"/>
+        </preConditions>
+        <comment>Inserting one teacher per department using the JOINED strategy.</comment>
+
+        <sql dbms="postgresql, mysql, h2">
+            INSERT INTO users (username, password, email, full_name, role, active, created_at, updated_at)
+            VALUES ('mech_teacher', '{bcrypt}$2a$10$HASHED_PASSWORD_PLACEHOLDER', 'mech_teacher@eproc.edu',
+                    'Ravi Kumar', 'TEACHER', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+            INSERT INTO teachers (id, department_id, specialization, employee_id)
+            VALUES ((SELECT id FROM users WHERE username = 'mech_teacher'),
+                    1,
+                    'Thermodynamics',
+                    'EMP-MECH-001');
+        </sql>
+
+        <sql dbms="postgresql, mysql, h2">
+            INSERT INTO users (username, password, email, full_name, role, active, created_at, updated_at)
+            VALUES ('cs_teacher', '{bcrypt}$2a$10$HASHED_PASSWORD_PLACEHOLDER', 'cs_teacher@eproc.edu', 'Priya Sharma',
+                    'TEACHER', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+            INSERT INTO teachers (id, department_id, specialization, employee_id)
+            VALUES ((SELECT id FROM users WHERE username = 'cs_teacher'),
+                    2,
+                    'Data Structures',
+                    'EMP-CS-002');
+        </sql>
+
+            </changeSet>
+
+    <changeSet id="insert-initial-students-data0003" author="subham patel">
+        <preConditions onFail="MARK_RAN">
+            <tableIsEmpty tableName="students"/>
+        </preConditions>
+        <comment>Inserting two initial students (using JOINED inheritance strategy).</comment>
+        <sql dbms="postgresql, mysql, h2">
+            INSERT INTO users (username, password, email, full_name, role, active, created_at, updated_at)
+            VALUES ('s1_mech', '{bcrypt}$2a$10$HASHED_PASSWORD_PLACEHOLDER', 'student1@eproc.edu', 'Aisha Khan', 'STUDENT', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+            -- Insert into child table (students)
+            INSERT INTO students (id, department_id, teacher_id, student_id, enrollment_year)
+            VALUES (
+                           (SELECT id FROM users WHERE username = 's1_mech'),
+                           1, -- Department ID for Mechanical Science
+                           (SELECT id FROM users WHERE username = 'mech_teacher'), -- Teacher ID (Ravi Kumar)
+                           'STU2025-101',
+                           '2025'
+                   );
+        </sql>
+
+        <sql dbms="postgresql, mysql, h2">
+            INSERT INTO users (username, password, email, full_name, role, active, created_at, updated_at)
+            VALUES ('s2_cs', '{bcrypt}$2a$10$HASHED_PASSWORD_PLACEHOLDER', 'student2@eproc.edu', 'Bharat Joshi', 'STUDENT', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+            INSERT INTO students (id, department_id, teacher_id, student_id, enrollment_year)
+            VALUES (
+                           (SELECT id FROM users WHERE username = 's2_cs'),
+                           2, -- Department ID for Computer Science
+                           (SELECT id FROM users WHERE username = 'cs_teacher'), -- Teacher ID (Priya Sharma)
+                           'STU2025-201',
+                           '2025'
+                   );
+        </sql>
+    </changeSet>
+    <changeSet id="insert-initial-subjects-data-0004" author="subham patel">
+        <preConditions onFail="MARK_RAN">
+            <tableIsEmpty tableName="subjects"/>
+        </preConditions>
+        <comment>Inserting two subjects for each of the five initial departments.</comment>
+
+        <insert tableName="subjects">
+            <column name="name" value="Fluid Mechanics"/>
+            <column name="code" value="MECH201"/>
+            <column name="description" value="Study of fluid behavior, fluid statics, kinematics, and dynamics."/>
+            <column name="total_marks" valueNumeric="100"/>
+            <column name="passing_marks" valueNumeric="40"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="department_id" valueNumeric="1"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="subjects">
+            <column name="name" value="Manufacturing Processes"/>
+            <column name="code" value="MECH305"/>
+            <column name="description" value="Covers casting, forming, machining, and joining processes."/>
+            <column name="total_marks" valueNumeric="100"/>
+            <column name="passing_marks" valueNumeric="40"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="department_id" valueNumeric="1"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="subjects">
+            <column name="name" value="Data Structures and Algorithms"/>
+            <column name="code" value="CS301"/>
+            <column name="description" value="Study of fundamental data structures and analysis of common algorithms."/>
+            <column name="total_marks" valueNumeric="100"/>
+            <column name="passing_marks" valueNumeric="40"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="department_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="subjects">
+            <column name="name" value="Operating Systems"/>
+            <column name="code" value="CS405"/>
+            <column name="description" value="Covers process, memory, and file system management in modern OS."/>
+            <column name="total_marks" valueNumeric="100"/>
+            <column name="passing_marks" valueNumeric="40"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="department_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+
+
+    </changeSet>
 </databaseChangeLog>

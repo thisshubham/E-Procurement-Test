@@ -20,7 +20,7 @@ public interface Commonconstants {
     public final String STUDENT_SCORE = "/student/scoreboard";
 
     public final String QUESTION = "/questions";
-    public final String AUTH = "/api/v1/auth";
+    public final String AUTH = "/auth";
     public final String QUIZE_SUBJECTID_START =    "/quiz/{subjectId}/start";
     public final String QUIZE_QUIZEID_SUBMIT=  "/quiz/{quizId}/submit";
     public final String RESULT_RESULTID_GRADDE = "/results/{resultId}/grade";

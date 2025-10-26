@@ -74,8 +74,7 @@ public class TestResultService {
         Teacher teacher = teacherRepo.findById(teacherId)
                 .orElseThrow(() -> new RuntimeException("Teacher not found"));
 
-        Student student = studentRepo.findById(studentId)
-                .orElseThrow(() -> new RuntimeException("Student not found"));
+        Student student = studentRepo.findStudentByStudentIdCode(studentId);
 
         if (!teacher.getDepartment().getId().equals(student.getDepartment().getId())) {
             throw new RuntimeException("Access denied: Student not in your department");
