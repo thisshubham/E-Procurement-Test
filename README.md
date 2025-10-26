@@ -7,7 +7,7 @@
 - Postman (optional)
 
 ## Technology Stack
-- Spring Boot 3.2.0
+- Spring Boot 2.7.18
 - Spring Data JPA
 - Spring Security + Basic Auth
 - MySQL
