@@ -46,7 +46,6 @@
         </rollback>
     </changeSet>
 
-    <!-- 2. Departments Table -->
     <changeSet id="2-create-departments-table" author="subham">
         <preConditions onFail="MARK_RAN">
             <not>
@@ -74,7 +73,6 @@
         </rollback>
     </changeSet>
 
-    <!-- 3. Teachers Table -->
     <changeSet id="3-create-teachers-table" author="subham">
         <preConditions onFail="MARK_RAN">
             <not>
@@ -102,7 +100,6 @@
         </rollback>
     </changeSet>
 
-    <!-- 4. Students Table -->
     <changeSet id="4-create-students-table" author="subham">
         <preConditions onFail="MARK_RAN">
             <not>
@@ -136,7 +133,6 @@
         </rollback>
     </changeSet>
 
-    <!-- 5. Subjects Table -->
     <changeSet id="5-create-subjects-table" author="subham">
         <preConditions onFail="MARK_RAN">
             <not>
@@ -176,7 +172,6 @@
         </rollback>
     </changeSet>
 
-    <!-- 6. TestResults Table -->
     <changeSet id="6-create-test-results-table" author="subham">
         <preConditions onFail="MARK_RAN">
             <not>
@@ -241,7 +236,6 @@
         </rollback>
     </changeSet>
 
-    <!-- 7. Questions Table -->
     <changeSet id="7-create-questions-table" author="subham">
         <preConditions onFail="MARK_RAN">
             <not>
@@ -279,7 +273,6 @@
         </rollback>
     </changeSet>
 
-    <!-- 8. Answers Table -->
     <changeSet id="8-create-answers-table" author="subham">
         <preConditions onFail="MARK_RAN">
             <not>
@@ -311,7 +304,6 @@
         </rollback>
     </changeSet>
 
-    <!-- 9. StudentAnswers Table -->
     <changeSet id="9-create-student-answers-table" author="subham">
         <preConditions onFail="MARK_RAN">
             <not>
@@ -354,6 +346,22 @@
     </changeSet>
 
 
+    <changeSet id="insert-admin-001" author="subham-patel">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="users"/>
+        </preConditions>
+
+        <insert tableName="users">
+            <column name="username" value="adminuser"/>
+            <column name="password" value="{bcrypt}$2a$10$/2J9pqYENXRx/ra72dWRIu2QKSfu6uThZE4e7t5gqqpPknsZB4NWC"/>
+            <column name="email" value="admin@example.com"/>
+            <column name="full_name" value="Admin User"/>
+            <column name="role" value="ADMIN"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="created_at" valueDate="NOW()"/>
+            <column name="updated_at" valueDate="NOW()"/>
+        </insert>
+    </changeSet>
 
     <changeSet id="insert-initial-departments-data0001" author="Subham Patel">
         <preConditions onFail="MARK_RAN">
@@ -391,7 +399,7 @@
 
         <sql dbms="postgresql, mysql, h2">
             INSERT INTO users (username, password, email, full_name, role, active, created_at, updated_at)
-            VALUES ('mech_teacher', '{bcrypt}$2a$10$HASHED_PASSWORD_PLACEHOLDER', 'mech_teacher@eproc.edu',
+            VALUES ('mech_teacher', '{bcrypt}$2a$10$/2J9pqYENXRx/ra72dWRIu2QKSfu6uThZE4e7t5gqqpPknsZB4NWC', 'mech_teacher@eproc.edu',
                     'Ravi Kumar', 'TEACHER', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
             INSERT INTO teachers (id, department_id, specialization, employee_id)
@@ -403,7 +411,7 @@
 
         <sql dbms="postgresql, mysql, h2">
             INSERT INTO users (username, password, email, full_name, role, active, created_at, updated_at)
-            VALUES ('cs_teacher', '{bcrypt}$2a$10$HASHED_PASSWORD_PLACEHOLDER', 'cs_teacher@eproc.edu', 'Priya Sharma',
+            VALUES ('cs_teacher', '{bcrypt}$2a$10$/2J9pqYENXRx/ra72dWRIu2QKSfu6uThZE4e7t5gqqpPknsZB4NWC', 'cs_teacher@eproc.edu', 'Priya Sharma',
                     'TEACHER', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
             INSERT INTO teachers (id, department_id, specialization, employee_id)
@@ -422,7 +430,7 @@
         <comment>Inserting two initial students (using JOINED inheritance strategy).</comment>
         <sql dbms="postgresql, mysql, h2">
             INSERT INTO users (username, password, email, full_name, role, active, created_at, updated_at)
-            VALUES ('s1_mech', '{bcrypt}$2a$10$HASHED_PASSWORD_PLACEHOLDER', 'student1@eproc.edu', 'Aisha Khan', 'STUDENT', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+            VALUES ('s1_mech', '{bcrypt}$2a$10$/2J9pqYENXRx/ra72dWRIu2QKSfu6uThZE4e7t5gqqpPknsZB4NWC', 'student1@eproc.edu', 'Aisha Khan', 'STUDENT', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
             -- Insert into child table (students)
             INSERT INTO students (id, department_id, teacher_id, student_id, enrollment_year)
@@ -437,7 +445,7 @@
 
         <sql dbms="postgresql, mysql, h2">
             INSERT INTO users (username, password, email, full_name, role, active, created_at, updated_at)
-            VALUES ('s2_cs', '{bcrypt}$2a$10$HASHED_PASSWORD_PLACEHOLDER', 'student2@eproc.edu', 'Bharat Joshi', 'STUDENT', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+            VALUES ('s2_cs', '{bcrypt}$2a$10$/2J9pqYENXRx/ra72dWRIu2QKSfu6uThZE4e7t5gqqpPknsZB4NWC', 'student2@eproc.edu', 'Bharat Joshi', 'STUDENT', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
             INSERT INTO students (id, department_id, teacher_id, student_id, enrollment_year)
             VALUES (
@@ -500,4 +508,71 @@
 
 
     </changeSet>
+    <changeSet id="insert-questions-0005" author="subham-patel">
+        <preConditions onFail="MARK_RAN">
+            <tableIsEmpty tableName="questions"/>
+            <tableIsEmpty tableName="answers"/>
+        </preConditions>
+        <insert tableName="questions">
+            <column name="question_text" value="The center of pressure on a plane surface immersed in a fluid is:"/>
+            <column name="difficulty_level" value="MEDIUM"/>
+            <column name="marks" valueNumeric="3"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="1"/>
+            <column name="created_at" valueDate="NOW()"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The center of pressure on a plane surface immersed in a fluid is:')"/>
+            <column name="answer_text" value="At the centroid of the immersed surface"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The center of pressure on a plane surface immersed in a fluid is:')"/>
+            <column name="answer_text" value="Above the centroid of the immersed surface"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The center of pressure on a plane surface immersed in a fluid is:')"/>
+            <column name="answer_text" value="Below the centroid of the immersed surface"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The center of pressure on a plane surface immersed in a fluid is:')"/>
+            <column name="answer_text" value="Coincides with the metacentre"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+
+        <insert tableName="questions">
+            <column name="question_text" value="The flow in which the velocity of successive fluid particles, at any point, is the same at successive periods of time is called:"/>
+            <column name="difficulty_level" value="EASY"/>
+            <column name="marks" valueNumeric="2"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="1"/>
+            <column name="created_at" valueDate="NOW()"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The flow in which the velocity of successive fluid particles, at any point, is the same at successive periods of time is called:')"/>
+            <column name="answer_text" value="Uniform flow"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The flow in which the velocity of successive fluid particles, at any point, is the same at successive periods of time is called:')"/>
+            <column name="answer_text" value="Steady flow"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The flow in which the velocity of successive fluid particles, at any point, is the same at successive periods of time is called:')"/>
+            <column name="answer_text" value="Laminar flow"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The flow in which the velocity of successive fluid particles, at any point, is the same at successive periods of time is called:')"/>
+            <column name="answer_text" value="Turbulent flow"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+
+    </changeSet>
+
 </databaseChangeLog>
