@@ -13,8 +13,6 @@ public class AdminDto  {
     private String fullName;
     private Admin.Role role;
     private Boolean active = true;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 
 
 

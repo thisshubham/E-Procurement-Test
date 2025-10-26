@@ -12,6 +12,7 @@ import com.eProcurement.utility.ResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -113,6 +114,7 @@ public class UserService  {
             return null;
         }
         try {
+            user.setPassword(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode(user.getPassword()));
             Admin admin = new Admin(user);
             Admin savedAdmin = userRepo.save(admin);
             return savedAdmin;
