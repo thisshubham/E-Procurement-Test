@@ -2,6 +2,8 @@ package com.eProcurement.entity;
 
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,10 +27,12 @@ public class TestResult {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id", nullable = false)
+    @JsonBackReference
     private Student student;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "subject_id", nullable = false)
+    @JsonBackReference
     private Subject subject;
 
     @Column(nullable = false)
@@ -58,6 +62,7 @@ public class TestResult {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "graded_by")
+    @JsonBackReference
     private Teacher gradedBy;
 
     @Column(length = 1000)

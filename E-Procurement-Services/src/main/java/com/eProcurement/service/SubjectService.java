@@ -43,13 +43,13 @@ public class SubjectService {
             subject.setPassingMarks(request.getPassingMarks() != null ? request.getPassingMarks() : 40);
             subject.setActive(request.getActive() != null ? request.getActive() : true);
             subject.setDepartment(department);
-            subjectRepo.save(subject);
+            responseDto.setData(subjectRepo.save(subject));
             responseDto.setResponseMessege("Subject created successfully");
             responseDto.setResponseCode(HttpStatus.CREATED.value());
             return responseDto;
         } catch (RuntimeException e) {
-            responseDto.setResponseMessege("Subject created successfully");
-            responseDto.setResponseCode(HttpStatus.CREATED.value());
+            responseDto.setResponseMessege("Failure");
+            responseDto.setResponseCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
             throw new RuntimeException(e);
         }
     }

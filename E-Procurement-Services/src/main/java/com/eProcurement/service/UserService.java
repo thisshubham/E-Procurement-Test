@@ -47,7 +47,7 @@ public class UserService  {
 
             Teacher teacher = new Teacher();
             teacher.setUsername(request.getUsername());
-            teacher.setPassword(request.getPassword());
+            teacher.setPassword(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode(request.getPassword()));
             teacher.setEmail(request.getEmail());
             teacher.setFullName(request.getFullName());
             teacher.setEmployeeId(request.getEmployeeId());

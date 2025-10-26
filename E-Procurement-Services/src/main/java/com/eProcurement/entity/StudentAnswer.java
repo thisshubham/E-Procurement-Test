@@ -1,6 +1,9 @@
 package com.eProcurement.entity;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +16,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class StudentAnswer {
 
     @Id
@@ -21,14 +25,17 @@ public class StudentAnswer {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "test_result_id", nullable = false)
+    @JsonIgnore
     private TestResult testResult;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id", nullable = false)
+    @JsonIgnore
     private Question question;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "selected_answer_id")
+    @JsonIgnore
     private Answer selectedAnswer;
 
     @Column(nullable = false)

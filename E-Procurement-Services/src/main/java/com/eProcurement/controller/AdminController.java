@@ -71,10 +71,7 @@ public class AdminController {
 
     @PostMapping("/creStud")
     public StudentDto createTeacher(@RequestBody StudentDto dto) {
-        if (dto.getUserRole().equals(Admin.Role.ADMIN.name())) {
             return studentServ.createStudent(dto);
-        } else {
-            throw new RuntimeException("Invalid Role");
-        }
+
     }
 }

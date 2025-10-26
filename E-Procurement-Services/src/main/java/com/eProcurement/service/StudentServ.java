@@ -9,6 +9,7 @@ import com.eProcurement.repo.DepartmentRepo;
 import com.eProcurement.repo.StudentRepo;
 import com.eProcurement.repo.TeacherRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public class StudentServ {
         student.setTeacher(teacherOpt.get());
         student.setFullName((studentDto.getName()));
         student.setEmail(studentDto.getEmail());
-        student.setPassword(studentDto.getPassword());
+        student.setPassword(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode(studentDto.getPassword()));
         student.setActive(true);
         student.setUsername(studentDto.getUserName());
         if (Admin.Role.STUDENT.name().equals(studentDto.getRole())) {
