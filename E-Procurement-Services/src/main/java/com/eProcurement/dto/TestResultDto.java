@@ -2,6 +2,8 @@ package com.eProcurement.dto;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class TestResultDto {
     private Long id;
@@ -14,4 +16,6 @@ public class TestResultDto {
     private Double totalMarks;
     private Double percentage;
     private String status;
+    private LocalDateTime submittedAt;
+    private String teacherRemarks;
 }

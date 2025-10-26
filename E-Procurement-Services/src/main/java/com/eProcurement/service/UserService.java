@@ -9,6 +9,7 @@ import com.eProcurement.repo.TeacherRepo;
 import com.eProcurement.utility.ResponseDto;
 import org.omg.CORBA.Object;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -58,7 +59,12 @@ public class UserService {
             responseDto.setResponseCode(HttpStatus.CREATED.value());
             responseDto.setResponseMessege("Teacher created successfully");
             responseDto.setData(savedTeacher);
-        } catch (Exception e) {
+        }
+        catch (DataIntegrityViolationException e) {
+            responseDto.setResponseCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
+            responseDto.setResponseMessege("An internal server error occurred.");
+            return responseDto;
+        }catch (Exception e) {
             responseDto.setResponseCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
             responseDto.setResponseMessege("An internal server error occurred.");
             return responseDto;

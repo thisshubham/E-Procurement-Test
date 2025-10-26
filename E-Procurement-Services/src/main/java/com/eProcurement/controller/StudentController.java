@@ -39,9 +39,9 @@ public class StudentController {
         return ResponseEntity.ok(quizService.submitQuiz(quizId, answers));
     }
 
-    @GetMapping("/results")
-    public ResponseEntity<List<TestResultDto>> getMyResults() {
-        return ResponseEntity.ok(testResultService.getMyResults());
+    @GetMapping("/results/{id}")
+    public ResponseEntity<List<TestResultDto>> getMyResults(@PathVariable("id") Long studentId) {
+        return ResponseEntity.ok(testResultService.getMyResults(studentId));
     }
 }
 

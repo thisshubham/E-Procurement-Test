@@ -11,4 +11,7 @@ public interface TestResultRepo extends JpaRepository<TestResult, Long> {
     TestResult findTestResultByIdAndMarksObtained(Long resultId, int marks);
 
     List<TestResult> findAllBySubject_Id(Long currentStudentId);
+
+    List<TestResult> findTestResultByStudent_Id(Long studentId);
+
 }

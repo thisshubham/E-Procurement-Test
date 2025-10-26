@@ -58,5 +58,10 @@ public class TeacherController {
         return ResponseEntity.ok( testResultService.gradeResult(resultId, marks, remarks, teacherId));
 
     }
+    @GetMapping(Commonconstants.TEACHER_TESTRESULT_STUDENT)
+    public ResponseEntity<List<TestResultDto>> getTestResultByDepartment(@PathVariable("studnetId") Long studentId,
+                                                                      @RequestParam Long teacherId ) {
+        return ResponseEntity.ok(testResultService.getStudentResultsByDepartment(studentId,teacherId));
+    }
 }
 
