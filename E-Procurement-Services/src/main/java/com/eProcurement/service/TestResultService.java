@@ -100,5 +100,14 @@ public class TestResultService {
         dto.setSubmittedAt(result.getSubmittedAt());
         return dto;
     }
+
+    public List<TestResultDto> getStudentScoreBoard(Long studentId) {
+        Student student = studentRepo.findStudentByStudentIdCode(studentId);
+        List<TestResult> results = testResultRepo.findTestResultByStudent_Id(student.getId());
+        return results.stream()
+                .map(this::mapToDto)
+                .collect(Collectors.toList());
+    }
+
 }
 

@@ -43,5 +43,9 @@ public class StudentController {
     public ResponseEntity<List<TestResultDto>> getMyResults(@PathVariable("id") Long studentId) {
         return ResponseEntity.ok(testResultService.getMyResults(studentId));
     }
+    @GetMapping(Commonconstants.STUDENT_SCORE)
+    public ResponseEntity<List<TestResultDto>> getStudentScoreBoard(@RequestParam Long studentId) {
+        return ResponseEntity.ok(testResultService.getStudentScoreBoard(studentId));
+    }
 }
 
