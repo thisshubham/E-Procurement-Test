@@ -76,7 +76,61 @@ java -jar build/libs/E-Procurement-Services-1.0-SNAPSHOT.jar
 - *test_results*: (id, student_id, subject_id, marks_obtained, percentage)
 - *student_answers*: (id, test_result_id, question_id, selected_answer_id)
 
-## API Endpoints
+#### Admin API Endpoints
+
+## Create Department
+  **http://localhost:30080/api/v1/Eprocurement/admin/departments**
+  
+## Create Teacher
+  **http://localhost:30080/api/v1/Eprocurement/admin/teachers**
+  
+## Create Student
+  **http://localhost:30080/api/v1/Eprocurement/admin/creStud**
+  
+## Create Subject
+  **http://localhost:30080/api/v1/Eprocurement/admin/subjects**
+  
+## Create Question
+  **http://localhost:30080/api/v1/Eprocurement/admin/subjects/questions**
+  
+### Student Endpoints
+  ## View Result by Student ID
+  **http://localhost:30080/api/v1/Eprocurement/student/results/1**
+  
+  ## View Student Scoreboard
+  **http://localhost:30080/api/v1/Eprocurement/student/student/scoreboard?studentId=STU2025-201**
+  
+  ## View Subject List by Student
+  **http://localhost:30080/api/v1/Eprocurement/student/subjects?studentId=1**
+  
+  ## Start Quiz
+  **http://localhost:30080/api/v1/Eprocurement/student/quiz/22/start?studentId=3**
+  
+  ## Submit Quiz
+  **http://localhost:30080/api/v1/Eprocurement/student/quiz/1/submit**
+  
+  ## Student details by id
+  **http://localhost:30080/api/v1/Eprocurement/student/student/byId?studentId=1**
+
+  ### Teacher Endpoints
+  
+  ## View subject by deptID
+  **http://localhost:30080/api/v1/Eprocurement/teacher/subjects/1**
+  
+  ## View question by subject 
+  **http://localhost:30080/api/v1/Eprocurement/teacher/subjects/2/questions**
+  
+  ## View student List by department
+  **http://localhost:30080/api/v1/Eprocurement/teacher/teacher/1/student**
+  
+  ## Teacher marks grade 
+  **http://localhost:30080/api/v1/Eprocurement/teacher/results/2/grade?marks=2&remarks=2&teacherId=2**
+  
+  ## Assign Department to teacher
+  **http://localhost:30080/api/v1/Eprocurement/teacher/teacher/assign/department?deparmentId=2&teacherId=2**
+
+
+  
 ### Postman Collection in resource folder
 ### Swagger documentation there on below url
 - http://localhost:30080/swagger-ui/index.html
