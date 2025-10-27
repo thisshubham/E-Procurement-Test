@@ -508,71 +508,651 @@
 
 
     </changeSet>
-    <changeSet id="insert-questions-0005" author="subham-patel">
+    <changeSet id="insert-questions-fluid-mechanics-0005" author="subham-kumar">
         <preConditions onFail="MARK_RAN">
-            <tableIsEmpty tableName="questions"/>
-            <tableIsEmpty tableName="answers"/>
+            <tableExists tableName="questions"/>
+            <tableExists tableName="answers"/>
         </preConditions>
+
+        <!-- Question 1 -->
         <insert tableName="questions">
-            <column name="question_text" value="The center of pressure on a plane surface immersed in a fluid is:"/>
+            <column name="question_text" value="According to Bernoulli’s theorem, the total energy per unit weight of the fluid is constant if the flow is:"/>
             <column name="difficulty_level" value="MEDIUM"/>
             <column name="marks" valueNumeric="3"/>
             <column name="active" valueBoolean="true"/>
             <column name="subject_id" valueNumeric="1"/>
-            <column name="created_at" valueDate="NOW()"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
         </insert>
 
         <insert tableName="answers">
-            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The center of pressure on a plane surface immersed in a fluid is:')"/>
-            <column name="answer_text" value="At the centroid of the immersed surface"/>
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='According to Bernoulli’s theorem, the total energy per unit weight of the fluid is constant if the flow is:' LIMIT 1)"/>
+            <column name="answer_text" value="Turbulent and unsteady"/>
             <column name="is_correct" valueBoolean="false"/>
         </insert>
         <insert tableName="answers">
-            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The center of pressure on a plane surface immersed in a fluid is:')"/>
-            <column name="answer_text" value="Above the centroid of the immersed surface"/>
-            <column name="is_correct" valueBoolean="false"/>
-        </insert>
-        <insert tableName="answers">
-            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The center of pressure on a plane surface immersed in a fluid is:')"/>
-            <column name="answer_text" value="Below the centroid of the immersed surface"/>
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='According to Bernoulli’s theorem, the total energy per unit weight of the fluid is constant if the flow is:' LIMIT 1)"/>
+            <column name="answer_text" value="Incompressible and steady"/>
             <column name="is_correct" valueBoolean="true"/>
         </insert>
         <insert tableName="answers">
-            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The center of pressure on a plane surface immersed in a fluid is:')"/>
-            <column name="answer_text" value="Coincides with the metacentre"/>
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='According to Bernoulli’s theorem, the total energy per unit weight of the fluid is constant if the flow is:' LIMIT 1)"/>
+            <column name="answer_text" value="Viscous and rotational"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='According to Bernoulli’s theorem, the total energy per unit weight of the fluid is constant if the flow is:' LIMIT 1)"/>
+            <column name="answer_text" value="Compressible and unsteady"/>
             <column name="is_correct" valueBoolean="false"/>
         </insert>
 
+        <!-- Question 2 -->
         <insert tableName="questions">
-            <column name="question_text" value="The flow in which the velocity of successive fluid particles, at any point, is the same at successive periods of time is called:"/>
+            <column name="question_text" value="The continuity equation is based on the principle of:"/>
             <column name="difficulty_level" value="EASY"/>
             <column name="marks" valueNumeric="2"/>
             <column name="active" valueBoolean="true"/>
             <column name="subject_id" valueNumeric="1"/>
-            <column name="created_at" valueDate="NOW()"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
         </insert>
 
         <insert tableName="answers">
-            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The flow in which the velocity of successive fluid particles, at any point, is the same at successive periods of time is called:')"/>
-            <column name="answer_text" value="Uniform flow"/>
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The continuity equation is based on the principle of:' LIMIT 1)"/>
+            <column name="answer_text" value="Conservation of energy"/>
             <column name="is_correct" valueBoolean="false"/>
         </insert>
         <insert tableName="answers">
-            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The flow in which the velocity of successive fluid particles, at any point, is the same at successive periods of time is called:')"/>
-            <column name="answer_text" value="Steady flow"/>
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The continuity equation is based on the principle of:' LIMIT 1)"/>
+            <column name="answer_text" value="Conservation of mass"/>
             <column name="is_correct" valueBoolean="true"/>
         </insert>
         <insert tableName="answers">
-            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The flow in which the velocity of successive fluid particles, at any point, is the same at successive periods of time is called:')"/>
-            <column name="answer_text" value="Laminar flow"/>
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The continuity equation is based on the principle of:' LIMIT 1)"/>
+            <column name="answer_text" value="Conservation of momentum"/>
             <column name="is_correct" valueBoolean="false"/>
         </insert>
         <insert tableName="answers">
-            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The flow in which the velocity of successive fluid particles, at any point, is the same at successive periods of time is called:')"/>
-            <column name="answer_text" value="Turbulent flow"/>
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The continuity equation is based on the principle of:' LIMIT 1)"/>
+            <column name="answer_text" value="Newton’s law of viscosity"/>
             <column name="is_correct" valueBoolean="false"/>
         </insert>
 
+        <!-- Question 3 -->
+        <insert tableName="questions">
+            <column name="question_text" value="The unit of kinematic viscosity is:"/>
+            <column name="difficulty_level" value="EASY"/>
+            <column name="marks" valueNumeric="2"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="1"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The unit of kinematic viscosity is:' LIMIT 1)"/>
+            <column name="answer_text" value="m²/s"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The unit of kinematic viscosity is:' LIMIT 1)"/>
+            <column name="answer_text" value="kg/m³"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The unit of kinematic viscosity is:' LIMIT 1)"/>
+            <column name="answer_text" value="N/m²"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='The unit of kinematic viscosity is:' LIMIT 1)"/>
+            <column name="answer_text" value="m/s"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+
+        <!-- Question 4 -->
+        <insert tableName="questions">
+            <column name="question_text" value="Which device is used to measure the discharge of fluid through a pipe?"/>
+            <column name="difficulty_level" value="MEDIUM"/>
+            <column name="marks" valueNumeric="3"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="1"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which device is used to measure the discharge of fluid through a pipe?' LIMIT 1)"/>
+            <column name="answer_text" value="Venturimeter"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which device is used to measure the discharge of fluid through a pipe?' LIMIT 1)"/>
+            <column name="answer_text" value="Manometer"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which device is used to measure the discharge of fluid through a pipe?' LIMIT 1)"/>
+            <column name="answer_text" value="Pitot tube"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which device is used to measure the discharge of fluid through a pipe?' LIMIT 1)"/>
+            <column name="answer_text" value="Differential pressure gauge"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+
+        <!-- Question 5 -->
+        <insert tableName="questions">
+            <column name="question_text" value="When the Reynolds number is less than 2000, the flow in a pipe is considered:"/>
+            <column name="difficulty_level" value="EASY"/>
+            <column name="marks" valueNumeric="2"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="1"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='When the Reynolds number is less than 2000, the flow in a pipe is considered:' LIMIT 1)"/>
+            <column name="answer_text" value="Laminar flow"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='When the Reynolds number is less than 2000, the flow in a pipe is considered:' LIMIT 1)"/>
+            <column name="answer_text" value="Turbulent flow"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='When the Reynolds number is less than 2000, the flow in a pipe is considered:' LIMIT 1)"/>
+            <column name="answer_text" value="Transitional flow"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='When the Reynolds number is less than 2000, the flow in a pipe is considered:' LIMIT 1)"/>
+            <column name="answer_text" value="Compressible flow"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert-questions-manufacturing-0006" author="subham-patel">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="questions"/>
+            <tableExists tableName="answers"/>
+        </preConditions>
+
+        <!-- Question 1 -->
+        <insert tableName="questions">
+            <column name="question_text" value="Which of the following is a mechanical property of materials?"/>
+            <column name="difficulty_level" value="EASY"/>
+            <column name="marks" valueNumeric="2"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following is a mechanical property of materials?' LIMIT 1)"/>
+            <column name="answer_text" value="Hardness"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following is a mechanical property of materials?' LIMIT 1)"/>
+            <column name="answer_text" value="Color"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following is a mechanical property of materials?' LIMIT 1)"/>
+            <column name="answer_text" value="Shape"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following is a mechanical property of materials?' LIMIT 1)"/>
+            <column name="answer_text" value="Weight"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+
+        <!-- Question 2 -->
+        <insert tableName="questions">
+            <column name="question_text" value="In metal cutting, the rake angle of the tool affects:"/>
+            <column name="difficulty_level" value="MEDIUM"/>
+            <column name="marks" valueNumeric="3"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='In metal cutting, the rake angle of the tool affects:' LIMIT 1)"/>
+            <column name="answer_text" value="Cutting force and chip formation"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='In metal cutting, the rake angle of the tool affects:' LIMIT 1)"/>
+            <column name="answer_text" value="Only surface finish"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='In metal cutting, the rake angle of the tool affects:' LIMIT 1)"/>
+            <column name="answer_text" value="Tool material only"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='In metal cutting, the rake angle of the tool affects:' LIMIT 1)"/>
+            <column name="answer_text" value="None of these"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+
+        <!-- Question 3 -->
+        <insert tableName="questions">
+            <column name="question_text" value="Which of the following processes is used for making seamless tubes?"/>
+            <column name="difficulty_level" value="EASY"/>
+            <column name="marks" valueNumeric="2"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following processes is used for making seamless tubes?' LIMIT 1)"/>
+            <column name="answer_text" value="Rolling"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following processes is used for making seamless tubes?' LIMIT 1)"/>
+            <column name="answer_text" value="Extrusion"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following processes is used for making seamless tubes?' LIMIT 1)"/>
+            <column name="answer_text" value="Drawing"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following processes is used for making seamless tubes?' LIMIT 1)"/>
+            <column name="answer_text" value="Mannessmann process"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+
+        <!-- Question 4 -->
+        <insert tableName="questions">
+            <column name="question_text" value="In casting, which defect occurs due to improper venting of gases?"/>
+            <column name="difficulty_level" value="MEDIUM"/>
+            <column name="marks" valueNumeric="3"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='In casting, which defect occurs due to improper venting of gases?' LIMIT 1)"/>
+            <column name="answer_text" value="Blowholes"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='In casting, which defect occurs due to improper venting of gases?' LIMIT 1)"/>
+            <column name="answer_text" value="Cold shut"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='In casting, which defect occurs due to improper venting of gases?' LIMIT 1)"/>
+            <column name="answer_text" value="Hot tears"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='In casting, which defect occurs due to improper venting of gases?' LIMIT 1)"/>
+            <column name="answer_text" value="Shrinkage cavity"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+
+        <!-- Question 5 -->
+        <insert tableName="questions">
+            <column name="question_text" value="Which of the following welding processes uses a non-consumable electrode?"/>
+            <column name="difficulty_level" value="HARD"/>
+            <column name="marks" valueNumeric="5"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following welding processes uses a non-consumable electrode?' LIMIT 1)"/>
+            <column name="answer_text" value="Gas welding"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following welding processes uses a non-consumable electrode?' LIMIT 1)"/>
+            <column name="answer_text" value="MIG welding"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following welding processes uses a non-consumable electrode?' LIMIT 1)"/>
+            <column name="answer_text" value="TIG welding"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following welding processes uses a non-consumable electrode?' LIMIT 1)"/>
+            <column name="answer_text" value="Submerged arc welding"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+
+    </changeSet>
+    <changeSet id="insert-data-structures-questions-0007" author="subham-kumar">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="questions"/>
+            <tableExists tableName="answers"/>
+        </preConditions>
+
+        <!-- Question 1 -->
+        <insert tableName="questions">
+            <column name="question_text" value="Which data structure uses LIFO (Last In First Out) principle?"/>
+            <column name="difficulty_level" value="EASY"/>
+            <column name="marks" valueNumeric="2"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="3"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which data structure uses LIFO (Last In First Out) principle?' LIMIT 1)"/>
+            <column name="answer_text" value="Stack"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which data structure uses LIFO (Last In First Out) principle?' LIMIT 1)"/>
+            <column name="answer_text" value="Queue"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which data structure uses LIFO (Last In First Out) principle?' LIMIT 1)"/>
+            <column name="answer_text" value="Array"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which data structure uses LIFO (Last In First Out) principle?' LIMIT 1)"/>
+            <column name="answer_text" value="Linked List"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+
+        <!-- Question 2 -->
+        <insert tableName="questions">
+            <column name="question_text" value="What is the time complexity of binary search on a sorted array?"/>
+            <column name="difficulty_level" value="EASY"/>
+            <column name="marks" valueNumeric="2"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="3"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='What is the time complexity of binary search on a sorted array?' LIMIT 1)"/>
+            <column name="answer_text" value="O(log n)"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='What is the time complexity of binary search on a sorted array?' LIMIT 1)"/>
+            <column name="answer_text" value="O(n)"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='What is the time complexity of binary search on a sorted array?' LIMIT 1)"/>
+            <column name="answer_text" value="O(n^2)"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='What is the time complexity of binary search on a sorted array?' LIMIT 1)"/>
+            <column name="answer_text" value="O(1)"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+
+        <!-- Question 3 -->
+        <insert tableName="questions">
+            <column name="question_text" value="Which traversal of a binary tree gives nodes in sorted order if the tree is a BST?"/>
+            <column name="difficulty_level" value="MEDIUM"/>
+            <column name="marks" valueNumeric="3"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="3"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which traversal of a binary tree gives nodes in sorted order if the tree is a BST?' LIMIT 1)"/>
+            <column name="answer_text" value="Inorder Traversal"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which traversal of a binary tree gives nodes in sorted order if the tree is a BST?' LIMIT 1)"/>
+            <column name="answer_text" value="Preorder Traversal"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which traversal of a binary tree gives nodes in sorted order if the tree is a BST?' LIMIT 1)"/>
+            <column name="answer_text" value="Postorder Traversal"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which traversal of a binary tree gives nodes in sorted order if the tree is a BST?' LIMIT 1)"/>
+            <column name="answer_text" value="Level Order Traversal"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+
+        <!-- Question 4 -->
+        <insert tableName="questions">
+            <column name="question_text" value="Which data structure is best suited for implementing recursion?"/>
+            <column name="difficulty_level" value="MEDIUM"/>
+            <column name="marks" valueNumeric="3"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="3"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which data structure is best suited for implementing recursion?' LIMIT 1)"/>
+            <column name="answer_text" value="Stack"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which data structure is best suited for implementing recursion?' LIMIT 1)"/>
+            <column name="answer_text" value="Queue"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which data structure is best suited for implementing recursion?' LIMIT 1)"/>
+            <column name="answer_text" value="Array"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which data structure is best suited for implementing recursion?' LIMIT 1)"/>
+            <column name="answer_text" value="Linked List"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+
+        <!-- Question 5 -->
+        <insert tableName="questions">
+            <column name="question_text" value="What is the worst-case time complexity of QuickSort algorithm?"/>
+            <column name="difficulty_level" value="HARD"/>
+            <column name="marks" valueNumeric="5"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="3"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='What is the worst-case time complexity of QuickSort algorithm?' LIMIT 1)"/>
+            <column name="answer_text" value="O(n^2)"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='What is the worst-case time complexity of QuickSort algorithm?' LIMIT 1)"/>
+            <column name="answer_text" value="O(n log n)"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='What is the worst-case time complexity of QuickSort algorithm?' LIMIT 1)"/>
+            <column name="answer_text" value="O(log n)"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='What is the worst-case time complexity of QuickSort algorithm?' LIMIT 1)"/>
+            <column name="answer_text" value="O(1)"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert-questions-operating-systems-0007" author="subham-kumar">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="questions"/>
+            <tableExists tableName="answers"/>
+        </preConditions>
+
+        <!-- Question 1 -->
+        <insert tableName="questions">
+            <column name="question_text" value="Which of the following is not a function of an Operating System?"/>
+            <column name="difficulty_level" value="EASY"/>
+            <column name="marks" valueNumeric="2"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following is not a function of an Operating System?' LIMIT 1)"/>
+            <column name="answer_text" value="Memory management"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following is not a function of an Operating System?' LIMIT 1)"/>
+            <column name="answer_text" value="File management"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following is not a function of an Operating System?' LIMIT 1)"/>
+            <column name="answer_text" value="Compiler design"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following is not a function of an Operating System?' LIMIT 1)"/>
+            <column name="answer_text" value="Process scheduling"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+
+        <!-- Question 2 -->
+        <insert tableName="questions">
+            <column name="question_text" value="Which scheduling algorithm is non-preemptive?"/>
+            <column name="difficulty_level" value="MEDIUM"/>
+            <column name="marks" valueNumeric="3"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which scheduling algorithm is non-preemptive?' LIMIT 1)"/>
+            <column name="answer_text" value="Round Robin"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which scheduling algorithm is non-preemptive?' LIMIT 1)"/>
+            <column name="answer_text" value="Shortest Job First (SJF)"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which scheduling algorithm is non-preemptive?' LIMIT 1)"/>
+            <column name="answer_text" value="Priority Scheduling (Preemptive)"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which scheduling algorithm is non-preemptive?' LIMIT 1)"/>
+            <column name="answer_text" value="Multilevel Queue"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+
+        <!-- Question 3 -->
+        <insert tableName="questions">
+            <column name="question_text" value="Which of the following is responsible for deadlock handling?"/>
+            <column name="difficulty_level" value="MEDIUM"/>
+            <column name="marks" valueNumeric="3"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following is responsible for deadlock handling?' LIMIT 1)"/>
+            <column name="answer_text" value="Operating System Kernel"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following is responsible for deadlock handling?' LIMIT 1)"/>
+            <column name="answer_text" value="User-level thread manager"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following is responsible for deadlock handling?' LIMIT 1)"/>
+            <column name="answer_text" value="Compiler"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following is responsible for deadlock handling?' LIMIT 1)"/>
+            <column name="answer_text" value="Assembler"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+
+        <!-- Question 4 -->
+        <insert tableName="questions">
+            <column name="question_text" value="In paging, the page table is used to translate:"/>
+            <column name="difficulty_level" value="EASY"/>
+            <column name="marks" valueNumeric="2"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='In paging, the page table is used to translate:' LIMIT 1)"/>
+            <column name="answer_text" value="Logical address to physical address"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='In paging, the page table is used to translate:' LIMIT 1)"/>
+            <column name="answer_text" value="Physical address to logical address"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='In paging, the page table is used to translate:' LIMIT 1)"/>
+            <column name="answer_text" value="Virtual address to process ID"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='In paging, the page table is used to translate:' LIMIT 1)"/>
+            <column name="answer_text" value="Frame number to page number"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+
+        <!-- Question 5 -->
+        <insert tableName="questions">
+            <column name="question_text" value="Which of the following is true about a semaphore?"/>
+            <column name="difficulty_level" value="HARD"/>
+            <column name="marks" valueNumeric="5"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="subject_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following is true about a semaphore?' LIMIT 1)"/>
+            <column name="answer_text" value="It is used for process synchronization"/>
+            <column name="is_correct" valueBoolean="true"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following is true about a semaphore?' LIMIT 1)"/>
+            <column name="answer_text" value="It is used for file handling"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following is true about a semaphore?' LIMIT 1)"/>
+            <column name="answer_text" value="It is a hardware device"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
+        <insert tableName="answers">
+            <column name="question_id" valueComputed="(SELECT id FROM questions WHERE question_text='Which of the following is true about a semaphore?' LIMIT 1)"/>
+            <column name="answer_text" value="It is used for memory management"/>
+            <column name="is_correct" valueBoolean="false"/>
+        </insert>
     </changeSet>
 
 </databaseChangeLog>
